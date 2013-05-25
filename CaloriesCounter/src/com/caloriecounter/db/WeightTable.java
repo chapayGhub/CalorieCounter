@@ -19,7 +19,7 @@ public class WeightTable {
 			+ KEY_WEIGHT
 			+ " FLOAT NOT NULL, "
 			+ KEY_DATE_TIME
-			+ " DATETIME NOT NULL, "
+			+ " DATETIME NOT NULL "
 			+ ");";
 
 	public static void onCreate(SQLiteDatabase database) {

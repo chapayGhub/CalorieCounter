@@ -21,7 +21,7 @@ public class CalorieTable {
 			+ " FLOAT NOT NULL, "
 			+ KEY_TYPE
 			+ " INTEGER NOT NULL, "
-			+ KEY_DATE_TIME + " DATETIME NOT NULL, " + ");";
+			+ KEY_DATE_TIME + " DATETIME NOT NULL " + ");";
 
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(CREATE_TABLE_ENTRIES);

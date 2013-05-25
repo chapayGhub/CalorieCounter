@@ -25,7 +25,7 @@ public class ActivityTable {
 			+ KEY_DURATION
 			+ " INTEGER NOT NULL, "
 			+ KEY_Steps
-			+ " INTEGER, "
+			+ " INTEGER "
 			+ ");";
 
 	public static void onCreate(SQLiteDatabase database) {
