@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="types">
+        <item>walking</item>
+        <item>running</item>
+        <item>jumping</item>
+        <item>sleeping</item>
+        <item>standing</item>
+</string-array>
+ </resources>   

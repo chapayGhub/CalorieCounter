@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="bottom" >
+<FrameLayout
+        android:id="@+id/main_tab_banner3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:background="@drawable/main_tab_frame_tabwidget_background_img2">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/home_title"
+            android:textColor="#000000"
+            android:textSize="18sp"/>
+
+    </FrameLayout> 
+      
+	<ImageView
+	    android:id="@+id/imageViewOfToday"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="120dp"
+	    android:layout_marginTop="60dp"
+	    android:background="@drawable/today" />
+	
+	<TextView
+	    android:id="@+id/textview_profile"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="30dp"
+	    android:layout_marginTop="180dp"
+	    android:text="DIARY HISTORY">
+     </TextView>
+
+
+ <ListView
+     android:id="@id/android:list"
+     android:layout_width="match_parent"
+     android:layout_height="336dp"
+     android:layout_alignParentLeft="true"
+     android:layout_below="@+id/imageViewOfToday" >
+ </ListView>
+
+  <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+        </LinearLayout>
+
+  <Button
+      android:id="@+id/btnClear"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="150dip"
+      android:layout_weight="1"
+      android:onClick="onClearClicked"
+      android:text="@string/ui_button_clear_title" />
+
+</RelativeLayout>

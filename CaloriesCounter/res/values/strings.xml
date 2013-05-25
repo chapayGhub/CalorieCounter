@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, TestTabHostActivity!</string>
+    <string name="app_name">Smartphone</string>
+    <string name="tab1">HOME</string>
+    <string name="tab2">ADVISOR</string>
+    <string name="tab3">DIARY</string>
+    <string name="tab4">PROFILE</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="home_title">Title</string>
+    <string name="back">BACK</string>
+    <string name="forward">FORWARD</string>
+    <string name="home">Home</string>
+    <string name="advisor">Advisor</string>
+    <string name="profile">Profile</string>
+    <string name="setting">Setting</string>
+    <string name="button_start">Start</string>
+    <string name="button_end">End</string>
+    <string name="spinner_name">Activity Type</string>
+    <string name="button_know">Get it!</string>
+    <string name="ui_profile_name_hint">Your name here</string>
+    <string name="ui_profile_name_title">Name</string>
+    <string name="ui_profile_age_hint">Your Age here</string>
+    <string name="ui_profile_age_title">Age:</string>
+    <string name="ui_profile_weight_hint">Your weight here</string>
+    <string name="ui_profile_weight_title">Weight:</string>
+    <string name="ui_profile_height_hint">Your height here</string>
+    <string name="ui_profile_height_title">Height:</string>
+    <string name="ui_profile_gender_title">Gender:</string>
+    <string name="ui_profile_gender_male">Male</string>
+    <string name="ui_profile_gender_female">Female</string>
+    <string name="ui_button_save_title">Save</string>
+    <string name="ui_button_cancel_title">Cancel</string>
+        <string name="ui_button_clear_title">Clear All</string>
+    <string name="ui_profile_toast_save_text">Profile saved</string>
+    <string name="ui_profile_toast_cancel_text">Change canceled</string>
+    <string name="preference_name">myruns_shared_preference</string>
+    <string name="dialog_fragment_tag_general">general_dialog_fragment</string>
+    <string name="preference_key_profile_name">profile_name</string>
+    <string name="preference_key_profile_age">profile_age</string>
+    <string name="preference_key_profile_weight">profile_weight</string>
+    <string name="preference_key_profile_height">profile_height</string>
+    <string name="preference_key_profile_gender">profile_gender</string>
+
+</resources>
