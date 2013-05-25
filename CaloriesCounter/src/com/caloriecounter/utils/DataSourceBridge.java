@@ -54,6 +54,7 @@ public class DataSourceBridge {
 		values.put(ActivityTable.KEY_DATE_TIME, System.currentTimeMillis());
 		values.put(ActivityTable.KEY_DURATION, value.getDuration());
 		values.put(ActivityTable.KEY_Steps, value.getSteps());
+		values.put(ActivityTable.KEY_CALORIE, value.getCalorie());
 		long insertId = database.insert(ActivityTable.TABLE_NAME, null, values);
 		Log.v(TAG, "ACTIVITY entry stored: id = " + insertId);
 		return insertId;
@@ -81,6 +82,8 @@ public class DataSourceBridge {
 
 	/**
 	 * if params are null then query all the records
+	 * 
+	 * params can be get from DBDateUtils
 	 * 
 	 * @param startTime
 	 * @param endTime
@@ -114,6 +117,8 @@ public class DataSourceBridge {
 	/**
 	 * if params are null then query all the records
 	 * 
+	 * params can be get from DBDateUtils
+	 * 
 	 * @param startTime
 	 * @param endTime
 	 * @return
@@ -144,6 +149,8 @@ public class DataSourceBridge {
 
 	/**
 	 * if params are null then query all the records
+	 * 
+	 * params can be get from DBDateUtils
 	 * 
 	 * @param startTime
 	 * @param endTime

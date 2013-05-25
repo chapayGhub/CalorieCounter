@@ -12,6 +12,7 @@ public class ActivityTable {
 	public static final String KEY_DATE_TIME = "date_time";
 	public static final String KEY_DURATION = "duration";
 	public static final String KEY_Steps = "steps";
+	public static final String KEY_CALORIE = "calorie";
 
 	public static final String CREATE_TABLE_ENTRIES = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_NAME
@@ -25,8 +26,8 @@ public class ActivityTable {
 			+ KEY_DURATION
 			+ " INTEGER NOT NULL, "
 			+ KEY_Steps
-			+ " INTEGER "
-			+ ");";
+			+ " INTEGER, "
+			+ KEY_CALORIE + " FLOAT " + ");";
 
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(CREATE_TABLE_ENTRIES);

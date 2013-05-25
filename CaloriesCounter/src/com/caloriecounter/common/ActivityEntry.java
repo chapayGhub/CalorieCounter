@@ -7,7 +7,7 @@ import android.database.Cursor;
 /**
  * 
  * Data Object corresponding to a DB table
- *
+ * 
  */
 public class ActivityEntry {
 	private long id;
@@ -15,6 +15,8 @@ public class ActivityEntry {
 	private Date dateTime;
 	private int duration;
 	private int steps;
+
+	private float calorie;
 
 	public long getId() {
 		return id;
@@ -26,6 +28,14 @@ public class ActivityEntry {
 
 	public int getActivityType() {
 		return activityType;
+	}
+
+	public float getCalorie() {
+		return calorie;
+	}
+
+	public void setCalorie(float calorie) {
+		this.calorie = calorie;
 	}
 
 	public void setActivityType(int activityType) {
@@ -68,6 +78,7 @@ public class ActivityEntry {
 		result.setDateTime(c.getLong(index++));
 		result.setDuration(c.getInt(index++));
 		result.setSteps(c.getInt(index++));
+		result.setCalorie(c.getFloat(index++));
 		return result;
 	}
 }
