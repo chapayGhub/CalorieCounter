@@ -1,145 +1,190 @@
 package com.caloriecounter.portal;
 
-import com.example.caloriescounter.R;
+import java.util.LinkedList;
+import java.util.List;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.NumberPicker;
+import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.example.caloriescounter.R;
+
+@SuppressWarnings("all")
 public class AdvisorActivity extends Activity {
 
-	private NumberPicker numpicker1;
-	private NumberPicker numpicker2;
-	private NumberPicker numpicker3;
-	private NumberPicker numpicker4;
-	private NumberPicker numpicker5;
-	private NumberPicker numpicker6;
-	private NumberPicker numpicker7;
-	private NumberPicker numpicker8;
-	private NumberPicker numpicker9;
-	private NumberPicker numpicker10;
-	private NumberPicker numpicker11;
-	private NumberPicker numpicker12;
-
-	private Button mButtonAdvisor;
-	private Button mButtonReset;
-
-	private Context mContext;
+	LinearLayout content = null;
+	List<SelectionGroup> list = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_advisor);
-		System.out.println("tab2");
+		list = new LinkedList<SelectionGroup>();
 
-		mContext = this;
+		LinearLayout parentContainer = new LinearLayout(this);
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT);
+		parentContainer.setLayoutParams(params);
+		parentContainer.setOrientation(LinearLayout.VERTICAL);
 
-		String[] nums = new String[21];
-		for (int i = 0; i < nums.length; i++) {
-			nums[i] = Integer.toString(i);
-		}
+		FrameLayout title = new FrameLayout(this);
+		params = new LayoutParams(LayoutParams.FILL_PARENT,
+				LayoutParams.WRAP_CONTENT);
+		title.setLayoutParams(params);
+		title.setPadding(10, 0, 10, 0);
+		title.setBackgroundResource(com.example.caloriescounter.R.drawable.main_tab_frame_tabwidget_background_img2);
 
-		numpicker1 = (NumberPicker) findViewById(R.id.numberPicker1);
-		numpicker1.setMaxValue(20);
-		numpicker1.setMinValue(0);
-		numpicker1.setWrapSelectorWheel(true);
-		numpicker1.setDisplayedValues(nums);
+		TextView txtTitle = new TextView(this);
+		params = new LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT);
+		txtTitle.setTextColor(Color.WHITE);
+		txtTitle.setText("Food");
+		txtTitle.setLayoutParams(params);
+		txtTitle.setTextSize(18);
 
-		numpicker2 = (NumberPicker) findViewById(R.id.numberPicker2);
-		numpicker2.setMaxValue(20);
-		numpicker2.setMinValue(0);
-		numpicker2.setWrapSelectorWheel(true);
-		numpicker2.setDisplayedValues(nums);
+		title.addView(txtTitle);
+		parentContainer.addView(title);
 
-		numpicker3 = (NumberPicker) findViewById(R.id.numberPicker3);
-		numpicker3.setMaxValue(20);
-		numpicker3.setMinValue(0);
-		numpicker3.setWrapSelectorWheel(true);
-		numpicker3.setDisplayedValues(nums);
+		LinearLayout buttonL = new LinearLayout(this);
+		params = new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.WRAP_CONTENT);
+		buttonL.setLayoutParams(params);
 
-		numpicker4 = (NumberPicker) findViewById(R.id.numberPicker4);
-		numpicker4.setMaxValue(20);
-		numpicker4.setMinValue(0);
-		numpicker4.setWrapSelectorWheel(true);
-		numpicker4.setDisplayedValues(nums);
-
-		numpicker5 = (NumberPicker) findViewById(R.id.numberPicker5);
-		numpicker5.setMaxValue(20);
-		numpicker5.setMinValue(0);
-		numpicker5.setWrapSelectorWheel(true);
-		numpicker5.setDisplayedValues(nums);
-
-		numpicker6 = (NumberPicker) findViewById(R.id.numberPicker6);
-		numpicker6.setMaxValue(20);
-		numpicker6.setMinValue(0);
-		numpicker6.setWrapSelectorWheel(true);
-		numpicker6.setDisplayedValues(nums);
-
-		numpicker7 = (NumberPicker) findViewById(R.id.numberPicker7);
-		numpicker7.setMaxValue(20);
-		numpicker7.setMinValue(0);
-		numpicker7.setWrapSelectorWheel(true);
-		numpicker7.setDisplayedValues(nums);
-
-		numpicker8 = (NumberPicker) findViewById(R.id.numberPicker8);
-		numpicker8.setMaxValue(20);
-		numpicker8.setMinValue(0);
-		numpicker8.setWrapSelectorWheel(true);
-		numpicker8.setDisplayedValues(nums);
-
-		numpicker9 = (NumberPicker) findViewById(R.id.numberPicker9);
-		numpicker9.setMaxValue(20);
-		numpicker9.setMinValue(0);
-		numpicker9.setWrapSelectorWheel(true);
-		numpicker9.setDisplayedValues(nums);
-
-		numpicker10 = (NumberPicker) findViewById(R.id.numberPicker10);
-		numpicker10.setMaxValue(20);
-		numpicker10.setMinValue(0);
-		numpicker10.setWrapSelectorWheel(true);
-		numpicker10.setDisplayedValues(nums);
-
-		numpicker11 = (NumberPicker) findViewById(R.id.numberPicker11);
-		numpicker11.setMaxValue(20);
-		numpicker11.setMinValue(0);
-		numpicker11.setWrapSelectorWheel(true);
-		numpicker11.setDisplayedValues(nums);
-
-		numpicker12 = (NumberPicker) findViewById(R.id.numberPicker12);
-		numpicker12.setMaxValue(20);
-		numpicker12.setMinValue(0);
-		numpicker12.setWrapSelectorWheel(true);
-		numpicker12.setDisplayedValues(nums);
-
-		mButtonAdvisor = (Button) findViewById(R.id.btnAdvise);
-		mButtonAdvisor.setOnClickListener(new View.OnClickListener() {
-
+		Button add = new Button(this);
+		params = new LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT, 1);
+		add.setText(R.string.button_add);
+		add.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(mContext, AdvisorActivity.class);
-				startActivity(i);
+				addOneLine();
 			}
 		});
 
-		mButtonReset = (Button) findViewById(R.id.btnReset);
-		mButtonReset.setOnClickListener(new View.OnClickListener() {
+		Button save = new Button(this);
+		save.setText(R.string.button_save);
+		params = new LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT, 1);
+		save.setLayoutParams(params);
+
+		save.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// TODO Save To DB, next activity shows the recommend
+
 			}
 		});
 
+		Button clear = new Button(this);
+		clear.setText(R.string.button_clear);
+		params = new LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT, 1);
+		clear.setLayoutParams(params);
+		clear.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				for (SelectionGroup s : list) {
+					content.removeView(s.layout);
+				}
+				list.clear();
+				addOneLine();
+			}
+		});
+
+		buttonL.addView(save);
+		buttonL.addView(clear);
+		buttonL.addView(add);
+
+		parentContainer.addView(buttonL);
+
+		ScrollView contentList = new ScrollView(this);
+		params = new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT);
+		contentList.setLayoutParams(params);
+
+		content = new LinearLayout(this);
+		params = new LayoutParams(LayoutParams.FILL_PARENT,
+				LayoutParams.MATCH_PARENT);
+		content.setLayoutParams(params);
+		content.setOrientation(LinearLayout.VERTICAL);
+		addOneLine();
+		contentList.addView(content);
+		parentContainer.addView(contentList);
+
+		this.setContentView(parentContainer);
+	}
+
+	private void addOneLine() {
+		SelectionGroup newLine = new SelectionGroup();
+		this.list.add(newLine);
+		this.content.addView(newLine.getWrappedLayout());
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		System.out.println("tab22");
+	}
+
+	public class SelectionGroup {
+		public Spinner food;
+		public NumberPicker number;
+		public TextView unit;
+		public LinearLayout layout;
+
+		private SelectionGroup() {
+			food = new Spinner(AdvisorActivity.this);
+			ArrayAdapter<CharSequence> adapter = ArrayAdapter
+					.createFromResource(AdvisorActivity.this,
+							R.array.food_list,
+							android.R.layout.simple_spinner_item);
+			food.setAdapter(adapter);
+			LayoutParams param = new LayoutParams(LayoutParams.WRAP_CONTENT,
+					LayoutParams.WRAP_CONTENT, 3);
+			param.setMargins(5, 5, 5, 5);
+			food.setLayoutParams(param);
+
+			number = new NumberPicker(AdvisorActivity.this);
+			number.setMaxValue(10);
+			number.setMinValue(1);
+			param = new LayoutParams(LayoutParams.WRAP_CONTENT,
+					LayoutParams.MATCH_PARENT, 2);
+			number.setLayoutParams(param);
+
+			unit = new TextView(AdvisorActivity.this);
+			unit.setTextSize(18);
+			unit.setText(R.string.ui_text_unit);
+			// save.setTextColor(Color.WHITE);
+			param = new LayoutParams(LayoutParams.WRAP_CONTENT,
+					LayoutParams.WRAP_CONTENT);
+			unit.setLayoutParams(param);
+		}
+
+		public LinearLayout getWrappedLayout() {
+			if (layout == null) {
+				layout = new LinearLayout(AdvisorActivity.this);
+				LayoutParams params = new LayoutParams(
+						LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT, 1);
+				layout.setGravity(Gravity.CENTER_HORIZONTAL);
+				layout.setLayoutParams(params);
+
+				layout.addView(food);
+				layout.addView(number);
+				layout.addView(unit);
+			}
+			return layout;
+
+		}
 	}
 
 }

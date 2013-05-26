@@ -45,4 +45,15 @@
     <string name="preference_key_profile_height">profile_height</string>
     <string name="preference_key_profile_gender">profile_gender</string>
 
+    
+     <string-array name="food_list">
+        <item>Apple</item>
+        <item>Rice</item>
+    </string-array>
+
+    <string name="button_add">add</string>
+    <string name="button_save">save</string>
+    <string name="button_clear">clear</string>
+    
+    <string name="ui_text_unit">lb./pic.</string>
 </resources>

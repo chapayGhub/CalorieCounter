@@ -9,7 +9,8 @@ package com.example.caloriescounter;
 
 public final class R {
     public static final class array {
-        public static final int types=0x7f070000;
+        public static final int food_list=0x7f060000;
+        public static final int types=0x7f060001;
     }
     public static final class attr {
     }
@@ -148,8 +149,11 @@ public final class R {
         public static final int advisor=0x7f05000c;
         public static final int app_name=0x7f050001;
         public static final int back=0x7f050009;
+        public static final int button_add=0x7f05002a;
+        public static final int button_clear=0x7f05002c;
         public static final int button_end=0x7f050010;
         public static final int button_know=0x7f050012;
+        public static final int button_save=0x7f05002b;
         public static final int button_start=0x7f05000f;
         public static final int dialog_fragment_tag_general=0x7f050024;
         public static final int forward=0x7f05000a;
@@ -186,6 +190,7 @@ public final class R {
         public static final int ui_profile_toast_save_text=0x7f050021;
         public static final int ui_profile_weight_hint=0x7f050017;
         public static final int ui_profile_weight_title=0x7f050018;
+        public static final int ui_text_unit=0x7f05002d;
     }
     public static final class style {
         /** 
@@ -209,10 +214,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }
