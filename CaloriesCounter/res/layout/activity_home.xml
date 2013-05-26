@@ -15,11 +15,11 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
             android:layout_gravity="center"
             android:text="@string/home_title"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"/>
 
     </FrameLayout>   
@@ -60,16 +60,57 @@
         android:layout_height="fill_parent"
         android:layout_above="@id/main_tab"
         android:layout_below="@id/main_tab_banner"
-        android:background="#FFFFE0"
+        android:background="@drawable/main_tab_frame_tabspec_background_current"
         android:orientation="vertical">
-        
-	
+
+        <ImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_gravity="center"
+            android:focusable="true" />
+          
         <TextView
-            android:id="@+id/record_text"
+            android:id="@+id/s_text1"
             android:layout_width="wrap_content"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:shadowColor="#FF0066"
+            android:shadowDx="4"
+            android:shadowDy="2"
+            android:shadowRadius="3.0"
+            android:text="Activity1,will display step" />
+        
+        <TextView
+            android:id="@+id/s_text2"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
             android:padding="20dip"
-            android:text="Activity"/>
+             android:shadowColor="#FF0066"
+            android:shadowDx="4"
+            android:shadowDy="2"
+            android:shadowRadius="3.0"
+            android:layout_gravity="center"
+            android:text="Activity2, will display time"/>
+        
+        
+     	<com.caloriecounter.utils.ScrollForeverTextView
+ 			android:id="@+id/channel"
+ 			android:layout_width="300dip"
+ 			android:layout_height="wrap_content"
+ 			android:layout_gravity="center"
+			android:textSize="20dip"
+			android:singleLine="true"
+			android:ellipsize="marquee"
+			android:marqueeRepeatLimit="marquee_forever"
+ 			android:textColor="#33CCFF"
+ 			android:layout_marginTop="50dp"
+ 			android:text="this is a test for 7 numbers and longer"
+ 			android:focusable="true">
+     	</com.caloriecounter.utils.ScrollForeverTextView>
+        
     </LinearLayout>
 
 </RelativeLayout>
