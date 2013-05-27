@@ -94,16 +94,20 @@ public class DataSourceBridge {
 		StringBuffer selection = new StringBuffer();
 		if (startTime != null) {
 			selection.append(" " + ActivityTable.KEY_DATE_TIME + ">"
-					+ startTime);
+					+ startTime + "");
 		}
 
 		if (endTime != null) {
-			selection.append(" " + ActivityTable.KEY_DATE_TIME + "<" + endTime);
+			if (selection.length() > 0) {
+				selection.append(" and ");
+			}
+			selection.append(" " + ActivityTable.KEY_DATE_TIME + "<" + endTime
+					+ "");
 		}
 
 		Cursor cursor = database.query(ActivityTable.TABLE_NAME, null,
-				selection.toString(), null, null, null,
-				ActivityTable.KEY_DATE_TIME);
+				selection.toString(), null, null, null, ActivityTable.KEY_ROWID
+						+ " desc");
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			ActivityEntry activity = ActivityEntry.buildFromCursor(cursor);
@@ -127,16 +131,21 @@ public class DataSourceBridge {
 		List<WeightEntry> result = new ArrayList<WeightEntry>();
 		StringBuffer selection = new StringBuffer();
 		if (startTime != null) {
-			selection.append(" " + WeightTable.KEY_DATE_TIME + ">" + startTime);
+			selection.append(" " + ActivityTable.KEY_DATE_TIME + ">"
+					+ startTime + "");
 		}
 
 		if (endTime != null) {
-			selection.append(" " + WeightTable.KEY_DATE_TIME + "<" + endTime);
+			if (selection.length() > 0) {
+				selection.append(" and ");
+			}
+			selection.append(" " + ActivityTable.KEY_DATE_TIME + "<" + endTime
+					+ "");
 		}
 
 		Cursor cursor = database.query(WeightTable.TABLE_NAME, null,
-				selection.toString(), null, null, null,
-				WeightTable.KEY_DATE_TIME);
+				selection.toString(), null, null, null, WeightTable.KEY_ROWID
+						+ " desc");
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			WeightEntry activity = WeightEntry.buildFromCursor(cursor);
@@ -161,21 +170,24 @@ public class DataSourceBridge {
 		List<CalorieEntry> result = new ArrayList<CalorieEntry>();
 		StringBuffer selection = new StringBuffer();
 		if (startTime != null) {
-			selection
-					.append(" " + CalorieTable.KEY_DATE_TIME + ">" + startTime);
+			selection.append(" " + ActivityTable.KEY_DATE_TIME + ">"
+					+ startTime + "");
 		}
 
 		if (endTime != null) {
-			selection.append(" " + CalorieTable.KEY_DATE_TIME + "<" + endTime);
+			if (selection.length() > 0) {
+				selection.append(" and ");
+			}
+			selection.append(" " + ActivityTable.KEY_DATE_TIME + "<" + endTime
+					+ "");
 		}
-
 		if (type != null) {
 			selection.append(" " + CalorieTable.KEY_TYPE + "=" + type);
 		}
 
 		Cursor cursor = database.query(CalorieTable.TABLE_NAME, null,
-				selection.toString(), null, null, null,
-				CalorieTable.KEY_DATE_TIME);
+				selection.toString(), null, null, null, CalorieTable.KEY_ROWID
+						+ " desc");
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			CalorieEntry activity = CalorieEntry.buildFromCursor(cursor);

@@ -3,10 +3,8 @@ package com.caloriecounter.portal;
 import java.util.Random;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -84,17 +82,5 @@ public class AdvisorInnerActivity extends Activity {
 		} catch (Exception e) {
 			Log.e("advisor", activities[index] + " does not exist in R.java");
 		}
-
-		mButtonKnow = (Button) findViewById(R.id.btnKnow);
-		mButtonKnow.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(AdvisorInnerActivity.this,
-						HomeActivity.class);
-
-				intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-				startActivity(intent);
-			}
-		});
 	}
 }

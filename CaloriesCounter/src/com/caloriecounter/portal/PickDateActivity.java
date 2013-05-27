@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.ListTextView;
+import com.caloriecounter.utils.DBDateUtils;
 import com.caloriecounter.utils.DataSourceBridge;
 import com.example.caloriescounter.R;
 
@@ -45,16 +46,23 @@ public class PickDateActivity extends ListActivity {
 	public List<ActivityEntry> activityList;
 
 	// Different format to display the information
-	public static final String DATE_FORMAT = "H:mm:ss MMM d yyyy";
+	public static final String DATE_FORMAT = "HH:mm:ss MM/dd/yyyy";
 	public static final String DISTANCE_FORMAT = "#.##";
 	public static final String MINUTES_FORMAT = "%d mins";
 	public static final String SECONDS_FORMAT = "%d secs";
+	ListAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_picktime);
+		Date start = DBDateUtils.getDateFromString(DBDateUtils
+				.getStringFromDate(System.currentTimeMillis()));
+		mStartDate.setTime(start);
+		Date end = DBDateUtils.getDateFromString(DBDateUtils
+				.getStringFromDate(System.currentTimeMillis()));
+		mStartDate.setTime(end);
 
 		mDisplayStartDate = (TextView) findViewById(R.id.startdate);
 		mDisplayEndDate = (TextView) findViewById(R.id.enddate);
@@ -66,34 +74,39 @@ public class PickDateActivity extends ListActivity {
 
 		mDataSourceBridge = new DataSourceBridge(mContext);
 
-		ListAdapter mAdapter = new ListAdapter();
+		mAdapter = new ListAdapter();
+		updateList();
+	}
 
-		mDataSourceBridge.open();
-		// activityList = mDataSourceBridge.queryActitivities(
-		// mStartDate.getTimeInMillis(), mEndDate.getTimeInMillis());
-		activityList = mDataSourceBridge.queryActitivities(null, null);
+	public void updateList() {
+		if (mAdapter != null) {
+			mAdapter.mObject.clear();
+			mDataSourceBridge.open();
+			activityList = mDataSourceBridge.queryActitivities(
+					mStartDate.getTimeInMillis(), mEndDate.getTimeInMillis());
 
-		if (!activityList.isEmpty()) {
+			if (!activityList.isEmpty()) {
+				for (ActivityEntry mEntry : activityList) {
+					String activityTypeString = parseActivityType(mEntry
+							.getActivityType());
+					String dateString = parseTime((Date) mEntry.getDateTime());
+					Integer s = Integer.valueOf(mEntry.getSteps());
+					String stepsString = s.toString() + " steps";
+					String durationString = parseDuration(mEntry.getDuration());
+					Float c = Float.valueOf(mEntry.getCalorie());
+					String calorieString = c.toString() + " cal";
 
-			for (ActivityEntry mEntry : activityList) {
-				String activityTypeString = parseActivityType(mEntry
-						.getActivityType());
-				String dateString = parseTime((Date) mEntry.getDateTime());
-				Integer s = Integer.valueOf(mEntry.getSteps());
-				String stepsString = s.toString() + " steps";
-				String durationString = parseDuration(mEntry.getDuration());
-				Float c = Float.valueOf(mEntry.getCalorie());
-				String calorieString = c.toString() + " cal";
-
-				ListTextView v = new ListTextView(mContext, activityTypeString
-						+ ", " + dateString, stepsString + ", "
-						+ durationString + ", " + calorieString);
-				mAdapter.mObject.add(v);
-
+					ListTextView v = new ListTextView(mContext,
+							activityTypeString + ", " + dateString, stepsString
+									+ ", " + durationString + ", "
+									+ calorieString);
+					mAdapter.mObject.add(v);
+				}
 			}
-		}
 
-		setListAdapter(mAdapter);
+			setListAdapter(mAdapter);
+			setListAdapter(mAdapter);
+		}
 	}
 
 	public void onStartDateClicked(View v) {
@@ -136,12 +149,14 @@ public class PickDateActivity extends ListActivity {
 		mDisplayStartDate.setText(DateUtils.formatDateTime(this,
 				mStartDate.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE
 						| DateUtils.FORMAT_SHOW_YEAR));
+		updateList();
 	}
 
 	private void updateEndDateDisplay() {
 		mDisplayEndDate.setText(DateUtils.formatDateTime(this,
 				mEndDate.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE
 						| DateUtils.FORMAT_SHOW_YEAR));
+		updateList();
 	}
 
 	public void OnListItemClick(ListView l, View v, int position, long id) {
@@ -156,25 +171,21 @@ public class PickDateActivity extends ListActivity {
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return mObject.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			// TODO Auto-generated method stub
 			return mObject.get(position);
 		}
 
 		@Override
 		public long getItemId(int position) {
-			// TODO Auto-generated method stub
 			return (long) position;
 		}
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
 			ListTextView sv;
 			if (convertView == null) {
 				sv = new ListTextView(mContext, mObject.get(position).mTitle
@@ -213,7 +224,6 @@ public class PickDateActivity extends ListActivity {
 
 	// From 1970 epoch time in seconds to something like "10/24/2012"
 	private String parseTime(Date datetime) {
-
 		SimpleDateFormat df = new SimpleDateFormat(DATE_FORMAT, Locale.US);
 		return df.format(datetime);
 	}
@@ -223,7 +233,6 @@ public class PickDateActivity extends ListActivity {
 		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
 				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
 				durationInSeconds);
-
 	}
 
 }

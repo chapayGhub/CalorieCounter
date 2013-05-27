@@ -1,11 +1,10 @@
 package com.caloriecounter.portal;
 
-import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 
 import android.app.ListActivity;
 import android.content.Context;
@@ -54,16 +53,6 @@ public class DiaryActivity extends ListActivity {
 
 		ListAdapter mAdapter = new ListAdapter();
 		mDataSourceBridge.open();
-		// TODO mok data
-		for (int i = 0; i < 1; i++) {
-			Random r = new Random();
-			ActivityEntry a = new ActivityEntry();
-			a.setActivityType(0);
-			a.setSteps(r.nextInt(1000));
-			a.setCalorie(100 + r.nextInt(200));
-			a.setDuration(r.nextInt(60));
-			mDataSourceBridge.insertActivity(a);
-		}
 
 		activityList = mDataSourceBridge.queryActitivities(null, null);
 
@@ -169,7 +158,6 @@ public class DiaryActivity extends ListActivity {
 		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
 				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
 				durationInSeconds);
-
 	}
 
 	public void onGetMoreClicked(View v) {

@@ -3,73 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    <FrameLayout
+      <FrameLayout
         android:id="@+id/main_tab_banner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/main_tab_frame_tabwidget_background_img2"
         android:paddingLeft="10dip"
-        android:paddingRight="10dip" >
+        android:paddingRight="10dip"
+        android:background="@drawable/main_tab_frame_tabwidget_background_img2">
 
-        <TextView
-            android:id="@+id/textBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:padding="8dip"
-            android:text="@string/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/home_title"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            android:text="Advisor"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/Forward"
+    </FrameLayout>
+    
+     
+    <ImageView
+            android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:padding="8dip"
-            android:text="@string/forward" />
-    </FrameLayout>
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="60dp"
+            android:background="@drawable/running"/>
+    
+      <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal" >
 
-    <!--
-         <Spinner
-        android:id="@+id/sp1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawSelectorOnTop="true"
-        android:prompt="@string/spinner_name"
-        android:text="Spinner" />
-    -->
+          <TextView
+             android:id="@+id/text_adivisor" 
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:paddingLeft="60dip"
+             android:text="Running for 40min!!" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       
-        android:layout_marginTop="5dp" 
-        android:layout_gravity="center"/>
+       </LinearLayout>
 
-    <TextView
-        android:id="@+id/text_adivisor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        />
-
-    <Button
-        android:id="@+id/btnKnow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="onKnowClicked"
-        android:text="@string/button_know" >
-    </Button>
 
 </LinearLayout>

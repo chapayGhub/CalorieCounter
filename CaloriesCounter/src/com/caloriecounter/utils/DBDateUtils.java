@@ -33,4 +33,23 @@ public class DBDateUtils {
 		}
 		return result;
 	}
+
+	@SuppressWarnings("all")
+	public static String getStringFromDate(Date d) {
+		StringBuffer result = new StringBuffer();
+		result.append(d.getYear());
+		result.append("-");
+		result.append(d.getMonth());
+		result.append("-");
+		result.append(d.getDate());
+		return result.toString();
+	}
+
+	@SuppressWarnings("all")
+	public static String getStringFromDate(Long d) {
+		Date s = new Date(d);
+		s.setYear(s.getYear() + 1900);
+		return getStringFromDate(s);
+	}
+
 }

@@ -23,6 +23,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.caloriecounter.common.ActivityEntry;
+import com.caloriecounter.common.CalorieEntry;
+import com.caloriecounter.common.Globals;
+import com.caloriecounter.utils.CalorieInput;
+import com.caloriecounter.utils.DataSourceBridge;
 import com.example.caloriescounter.R;
 
 public class HomeActivity extends Activity {
@@ -30,6 +35,9 @@ public class HomeActivity extends Activity {
 	public static final String S_TAG = "G-SENSOR";
 	public static final String S_NOTIFICATION_TITLE = "G-SENSOR";
 	public static final String S_NOTIFICATION_CONTENT = "recording your steps now";
+	public static final int RUNNING_WALKING_THRESHOLD = 5;
+
+	public DataSourceBridge mDataSourceBridge;
 
 	private TextView mTextview1;
 	private TextView mTextview2;
@@ -43,6 +51,8 @@ public class HomeActivity extends Activity {
 	private SensorEventListener sel;
 	private NotificationManager mNotificationManager;
 	Sensor accelerometerSensor;
+
+	int onStartClickedFlag = 0;
 
 	int duration = 0;
 	// private int durationPause = 0;
@@ -105,7 +115,7 @@ public class HomeActivity extends Activity {
 				// TODO Auto-generated method stub
 				// float x = event.values[SensorManager.DATA_X];
 				float y = event.values[SensorManager.DATA_Y];
-//				float z = event.values[SensorManager.DATA_Z];
+				// float z = event.values[SensorManager.DATA_Z];
 
 				for (int i = 1; i < 200; i++) {
 					s1[i - 1] = s[i];
@@ -161,6 +171,8 @@ public class HomeActivity extends Activity {
 				sensorManager.registerListener(sel, accelerometerSensor,
 						SensorManager.SENSOR_DELAY_FASTEST);
 				timeStarted = new GregorianCalendar();
+				onStartClickedFlag = 1;
+				mButtonStart.setEnabled(false);
 			}
 		};
 
@@ -171,40 +183,81 @@ public class HomeActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				if (onStartClickedFlag == 1) {
+					// ---------------------
+					if (flag == 0) {
+						sensorManager.unregisterListener(sel);
+						mTextview1.setText("0");
+						duration = ((int) ((System.currentTimeMillis() - timeStarted
+								.getTimeInMillis()) / 1000));
+						// dura = duration;
+						mTextview2.setText("0");
+						onStartClickedFlag = 0;
+					}
 
-				// ---------------------
-				if (flag == 0) {
-					sensorManager.unregisterListener(sel);
-					mTextview1.setText(String.valueOf(step));
-					duration = ((int) ((System.currentTimeMillis() - timeStarted
-							.getTimeInMillis()) / 1000));
-					// dura = duration;
-					mTextview2.setText(String.valueOf(duration));
+					AlertDialog.Builder builder = new Builder(mContext);
+					builder.setTitle("Your Choice");
+					builder.setMessage("Save to diary?");
+					builder.setPositiveButton("Yes",
+							new DialogInterface.OnClickListener() {
+
+								@Override
+								public void onClick(DialogInterface arg0,
+										int arg1) {
+									// TODO Auto-generated method stub
+
+									int thres = step / duration;
+									String activity_type = "walking";
+									float calorie = 0;
+									if (thres >= RUNNING_WALKING_THRESHOLD) {
+										activity_type = "running";
+									}
+									if (activity_type.equals("walking")) {
+										calorie = CalorieInput.WALKING
+												* ((float) duration / (float) 60);
+									} else {
+										calorie = CalorieInput.RUNNING
+												* ((float) duration / (float) 60);
+									}
+
+									mDataSourceBridge = new DataSourceBridge(
+											mContext);
+									mDataSourceBridge.open();
+
+									ActivityEntry a = new ActivityEntry();
+									a.setActivityType(0);
+									a.setSteps(step);
+									a.setCalorie(calorie);
+									a.setDuration(duration);
+									mDataSourceBridge.insertActivity(a);
+
+									CalorieEntry c = new CalorieEntry();
+									c.setType(Globals.CALORIE_TABLE_INPUT_TYPE.TYPE_OUT);
+									c.setCalorie(calorie);
+									mDataSourceBridge.insertCalorie(c);
+
+									mDataSourceBridge.close();
+
+								}
+							});
+					builder.setNegativeButton("No",
+							new DialogInterface.OnClickListener() {
+
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									// TODO Auto-generated method stub
+
+								}
+							});
+					builder.create().show();
+
+					Intent i = new Intent(mContext, HomeInnerActivity.class);
+					startActivity(i);
+
+					mButtonStart.setEnabled(true);
+
 				}
-
-				AlertDialog.Builder builder = new Builder(mContext);
-				builder.setTitle("Your Choice");
-				builder.setMessage("Save to diary?");
-				builder.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface arg0, int arg1) {
-								// TODO Auto-generated method stub
-
-							}
-						});
-				builder.setNegativeButton("No",
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// TODO Auto-generated method stub
-
-							}
-						});
-				builder.create().show();
 			}
 		});
 

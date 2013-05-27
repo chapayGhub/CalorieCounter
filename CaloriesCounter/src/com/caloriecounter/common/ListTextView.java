@@ -17,13 +17,13 @@ public class ListTextView extends LinearLayout {
 		this.setOrientation(VERTICAL);
 		mTitle = new TextView(context);
 		mTitle.setText(title);
-		mTitle.setTextSize(24);
+		mTitle.setTextSize(18);
 		addView(mTitle, new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.WRAP_CONTENT));
 
 		mSummary = new TextView(context);
 		mSummary.setText(summary);
-		mSummary.setTextSize(18);
+		mSummary.setTextSize(14);
 		addView(mSummary, new LinearLayout.LayoutParams(
 				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 		mSummary.setVisibility(GONE);
