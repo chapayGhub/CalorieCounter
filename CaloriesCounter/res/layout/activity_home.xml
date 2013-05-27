@@ -90,7 +90,7 @@
             android:shadowDx="4"
             android:shadowDy="2"
             android:shadowRadius="3.0"
-            android:text="Activity2, will display time" />
+            />
 
         <TextView
             android:id="@+id/s_text3"

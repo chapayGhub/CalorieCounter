@@ -1,6 +1,8 @@
 package com.caloriecounter.portal;
 
 import java.util.GregorianCalendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,12 +18,14 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.CalorieEntry;
@@ -35,7 +39,7 @@ public class HomeActivity extends Activity {
 	public static final String S_TAG = "G-SENSOR";
 	public static final String S_NOTIFICATION_TITLE = "G-SENSOR";
 	public static final String S_NOTIFICATION_CONTENT = "recording your steps now";
-	public static final double RUNNING_WALKING_THRESHOLD = 0.002;
+	public static final double RUNNING_WALKING_THRESHOLD = 0.0015;
 
 	public DataSourceBridge mDataSourceBridge;
 
@@ -55,9 +59,9 @@ public class HomeActivity extends Activity {
 	Sensor accelerometerSensor;
 
 	int onStartClickedFlag = 0;
-	String activity_type = "walking";
+	String activity_type = "Walking";
 
-	int duration = 0;
+	private volatile int duration = 0;
 	// private int durationPause = 0;
 	// private int dura = 0;
 	float[] s;
@@ -71,6 +75,8 @@ public class HomeActivity extends Activity {
 	int pre_step = 0;
 	int pre_duration = 0;
 	int duration_float = 0;
+
+	boolean stoped = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -89,8 +95,7 @@ public class HomeActivity extends Activity {
 
 		mTextview3 = (TextView) findViewById(R.id.s_text3);
 
-		mTextview1.setText(String.valueOf(step));
-		mTextview2.setText(String.valueOf(duration));
+		reset();
 
 		s = new float[200];
 		s1 = new float[200];
@@ -107,24 +112,19 @@ public class HomeActivity extends Activity {
 		if (savedInstanceState != null) {
 			step = savedInstanceState.getInt("STEPSAVED");
 			duration += savedInstanceState.getInt("TIMESAVED");
-			// durationPause = savedInstanceState.getInt("TIMESAVED");
-
 		}
 
 		sel = new SensorEventListener() {
 
 			@Override
 			public void onAccuracyChanged(Sensor arg0, int arg1) {
-				// TODO Auto-generated method stub
 			}
 
 			@SuppressWarnings("deprecation")
 			@Override
 			public void onSensorChanged(SensorEvent event) {
-				// TODO Auto-generated method stub
-				// float x = event.values[SensorManager.DATA_X];
+
 				float y = event.values[SensorManager.DATA_Y];
-				// float z = event.values[SensorManager.DATA_Z];
 
 				for (int i = 1; i < 200; i++) {
 					s1[i - 1] = s[i];
@@ -151,30 +151,16 @@ public class HomeActivity extends Activity {
 
 					if (i1 == 58) {
 						step++;
-						// int pre_step =
-						// Integer.valueOf(mTextview1.getText().toString());
-						// int pre_dura =
-						// Integer.valueOf(mTextview2.getText().toString());
-						// int now = ((int) (System.currentTimeMillis() -
-						// timeStarted
-						// .getTimeInMillis()));
-
-						// System.out.println("pre:"+pre_duration);
-						// System.out.println("now:"+now);
-						// System.out.println("now:"+now);
-						// System.out.println((float)(step -
-						// pre_step)/(float)(duration - pre_dura));
-						if ((step - pre_step) >= 3) {
-
+						mTextview1.setText(String.valueOf(step));
+						if ((step - pre_step) >= 2) {
 							float res = (float) (step - pre_step)
 									/ (float) (duration_float - pre_duration);
-							System.out.println(res);
 							if (res >= RUNNING_WALKING_THRESHOLD) {
-								activity_type = "running";
+								activity_type = "Running";
 							} else {
-								activity_type = "walking";
+								activity_type = "Walking";
 							}
-
+							mTextview3.setText(activity_type);
 							pre_step = step;
 							pre_duration = ((int) (System.currentTimeMillis() - timeStarted
 									.getTimeInMillis()));
@@ -182,33 +168,12 @@ public class HomeActivity extends Activity {
 						}
 					}
 				}
-
-				// int pre_step =
-				// Integer.valueOf(mTextview1.getText().toString());
-				// int pre_dura =
-				// Integer.valueOf(mTextview2.getText().toString());
-				mTextview1.setText(String.valueOf(step));
-				duration = ((int) ((System.currentTimeMillis() - timeStarted
-						.getTimeInMillis()) / 1000));
-				duration_float = ((int) (System.currentTimeMillis() - timeStarted
-						.getTimeInMillis()));
-				mTextview2.setText(String.valueOf(duration));
-				// dura = duration;
-
-				// System.out.println((float)(step-pre_step));
-				// System.out.println((float)(step - pre_step)/(float)(duration
-				// - pre_dura));
-				// if((float)(step - pre_step)/(float)(duration - pre_dura) >=
-				// RUNNING_WALKING_THRESHOLD){
-				// activity_type = "running";
-				// }else{
-				// activity_type = "walking";
-				// }
-
-				if (activity_type.equals("running")) {
-					mTextview3.setText("Running");
-				} else {
-					mTextview3.setText("Walking");
+				if (!stoped) {
+					duration = ((int) ((System.currentTimeMillis() - timeStarted
+							.getTimeInMillis()) / 1000));
+					duration_float = ((int) (System.currentTimeMillis() - timeStarted
+							.getTimeInMillis()));
+					mTextview2.setText(String.valueOf(duration));
 				}
 
 				i1 = 0;
@@ -226,14 +191,13 @@ public class HomeActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				// accelerometerSensor =
-				// sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 				sensorManager.registerListener(sel, accelerometerSensor,
 						SensorManager.SENSOR_DELAY_FASTEST);
 				timeStarted = new GregorianCalendar();
 				onStartClickedFlag = 1;
 				mButtonStart.setEnabled(false);
+				stoped = false;
+				mTextview3.setText("Walking");
 			}
 		};
 
@@ -243,22 +207,21 @@ public class HomeActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+
 				if (onStartClickedFlag == 1) {
 					// ---------------------
 					if (flag == 0) {
 						sensorManager.unregisterListener(sel);
-						mTextview1.setText("0");
 						duration = ((int) ((System.currentTimeMillis() - timeStarted
 								.getTimeInMillis()) / 1000));
 						duration_float = ((int) (System.currentTimeMillis() - timeStarted
 								.getTimeInMillis()));
-						// dura = duration;
-						mTextview2.setText("0");
 						onStartClickedFlag = 0;
 						mTextview3.setText("Ended!");
+						stoped = true;
 					}
 
+					reset();
 					AlertDialog.Builder builder = new Builder(mContext);
 					builder.setTitle("Your Choice");
 					builder.setMessage("Save to diary?");
@@ -269,7 +232,7 @@ public class HomeActivity extends Activity {
 										int arg1) {
 
 									float calorie = 0;
-									if (activity_type.equals("walking")) {
+									if (activity_type.equals("Walking")) {
 										calorie = CalorieInput.WALKING
 												* ((float) duration / (float) 60);
 									} else {
@@ -282,7 +245,7 @@ public class HomeActivity extends Activity {
 									mDataSourceBridge.open();
 
 									ActivityEntry a = new ActivityEntry();
-									if (activity_type.equals("walking")) {
+									if (activity_type.equals("Walking")) {
 										a.setActivityType(0);
 									} else {
 										a.setActivityType(1);
@@ -299,7 +262,7 @@ public class HomeActivity extends Activity {
 									mDataSourceBridge.insertCalorie(c);
 
 									mDataSourceBridge.close();
-									jumpToShow();
+									// jumpToShow();
 
 								}
 							});
@@ -308,7 +271,7 @@ public class HomeActivity extends Activity {
 								@Override
 								public void onClick(DialogInterface dialog,
 										int which) {
-									jumpToShow();
+									// jumpToShow();
 								}
 							});
 					step = 0;
@@ -338,7 +301,7 @@ public class HomeActivity extends Activity {
 	public void jumpToShow() {
 		Intent i = new Intent(mContext, HomeInnerActivity.class);
 		float calorie = 0;
-		if (activity_type.equals("walking")) {
+		if (activity_type.equals("Walking")) {
 			calorie = CalorieInput.WALKING * ((float) duration / (float) 60);
 		} else {
 			calorie = CalorieInput.RUNNING * ((float) duration / (float) 60);
@@ -346,6 +309,20 @@ public class HomeActivity extends Activity {
 
 		i.putExtra("calories", calorie);
 		startActivity(i);
+	}
+
+	private void reset() {
+		step = 0;
+		flag = 0;
+		i1 = 0;
+		pre_step = 0;
+		pre_duration = 0;
+		duration_float = 0;
+		// stoped = false;
+		duration = 0;
+		mTextview1.setText(String.valueOf(step));
+		mTextview2.setText(String.valueOf(duration));
+		mTextview3.setText("Not start yet!");
 	}
 
 	@Override
@@ -363,6 +340,7 @@ public class HomeActivity extends Activity {
 		super.onSaveInstanceState(outState);
 		// Save the tab index before the activity goes into background.
 		// Referred by string key TAB_INDEX_KEY
+		Toast.makeText(this, "savedInstanceIn", Toast.LENGTH_SHORT).show();
 		int stepSaved = Integer.valueOf(mTextview1.getText().toString());
 		outState.putInt("STEPSAVED", stepSaved);
 		int timeSaved = Integer.valueOf(mTextview2.getText().toString());

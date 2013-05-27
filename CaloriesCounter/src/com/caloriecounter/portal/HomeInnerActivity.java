@@ -9,7 +9,6 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.caloriecounter.utils.CalorieInput;
 import com.example.caloriescounter.R;
 
 public class HomeInnerActivity extends Activity {
