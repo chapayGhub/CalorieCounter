@@ -45,25 +45,25 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="270dp"
             android:orientation="horizontal" >
-    <Button
-        android:id="@+id/btnGetMore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dip"
-        android:layout_weight="1"
-        android:onClick="onGetMoreClicked"
-        android:text="@string/ui_button_getmore_title" />
 
-    <Button
-        android:id="@+id/btnClear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/linearLayout1"
-        android:layout_marginRight="22dp"
-        android:onClick="onClearClicked"
-        android:text="@string/ui_button_clear_title" />
+      <Button
+          android:id="@+id/btnGetMore"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="5dip"
+          android:layout_weight="1"
+          android:onClick="onGetMoreClicked"
+          android:text="@string/ui_button_getmore_title" />
+
+      <Button
+          android:id="@+id/btnClear"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="140dip"
+          android:layout_weight="1"
+          android:onClick="onClearClicked"
+          android:text="@string/ui_button_clear_title" />
+
     </LinearLayout>
     
      <ListView
