@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +23,7 @@ import com.caloriecounter.utils.DBDateUtils;
 import com.caloriecounter.utils.DataSourceBridge;
 import com.example.caloriescounter.R;
 
+@SuppressLint("DefaultLocale")
 public class DiaryActivity extends ListActivity {
 
 	public Context mContext; // context pointed to parent activity
@@ -38,7 +40,7 @@ public class DiaryActivity extends ListActivity {
 	public List<ActivityEntry> activityList;
 
 	// Different format to display the information
-	public static final String DATE_FORMAT = "H:mm:ss MMM d yyyy";
+	public static final String DATE_FORMAT = "HH:mm:ss MMM d yyyy";
 	public static final String DISTANCE_FORMAT = "#.##";
 	public static final String MINUTES_FORMAT = "%d mins";
 	public static final String SECONDS_FORMAT = "%d secs";
@@ -95,19 +97,16 @@ public class DiaryActivity extends ListActivity {
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return mObject.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			// TODO Auto-generated method stub
 			return mObject.get(position);
 		}
 
 		@Override
 		public long getItemId(int position) {
-
 			return (long) position;
 		}
 
@@ -158,9 +157,9 @@ public class DiaryActivity extends ListActivity {
 
 	// Convert duration in seconds to minutes.
 	private String parseDuration(int durationInSeconds) {
-		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
-				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
-				durationInSeconds);
+		return durationInSeconds > 60 ? String.format(Locale.US,
+				MINUTES_FORMAT, MINUTES_FORMAT) : String.format(Locale.US,
+				MINUTES_FORMAT, durationInSeconds);
 	}
 
 	public void onGetMoreClicked(View v) {
