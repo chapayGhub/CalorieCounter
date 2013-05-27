@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.ListTextView;
+import com.caloriecounter.utils.DBDateUtils;
 import com.caloriecounter.utils.DataSourceBridge;
 import com.example.caloriescounter.R;
 
@@ -54,7 +55,10 @@ public class DiaryActivity extends ListActivity {
 		ListAdapter mAdapter = new ListAdapter();
 		mDataSourceBridge.open();
 
-		activityList = mDataSourceBridge.queryActitivities(null, null);
+		activityList = mDataSourceBridge.queryActitivities(
+				DBDateUtils.getDateFromString(
+						DBDateUtils.getStringFromDate(System
+								.currentTimeMillis())).getTime(), null);
 
 		if (!activityList.isEmpty()) {
 
@@ -103,13 +107,12 @@ public class DiaryActivity extends ListActivity {
 
 		@Override
 		public long getItemId(int position) {
-			// TODO Auto-generated method stub
+
 			return (long) position;
 		}
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
 			ListTextView sv;
 			if (convertView == null) {
 				sv = new ListTextView(mContext, mObject.get(position).mTitle
