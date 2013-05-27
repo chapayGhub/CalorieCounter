@@ -76,7 +76,6 @@ public final class R {
         public static final int btnReset=0x7f090026;
         public static final int btnSave=0x7f090042;
         public static final int btnStart=0x7f09002f;
-        public static final int button_group=0x7f09002a;
         public static final int channel=0x7f090035;
         public static final int checkbox1=0x7f090001;
         public static final int checkbox10=0x7f09001c;
@@ -99,6 +98,7 @@ public final class R {
         public static final int imageProfile=0x7f090032;
         public static final int imageView1=0x7f090046;
         public static final int imageViewOfToday=0x7f090028;
+        public static final int linearLayout1=0x7f09002a;
         public static final int main_tab=0x7f09002e;
         public static final int main_tab_banner=0x7f09002d;
         public static final int main_tab_banner2=0x7f090000;
