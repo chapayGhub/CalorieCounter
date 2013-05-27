@@ -1,9 +1,12 @@
 package com.caloriecounter.portal;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -19,6 +22,10 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.caloriecounter.common.CalorieEntry;
+import com.caloriecounter.common.Globals;
+import com.caloriecounter.utils.CalorieInput;
+import com.caloriecounter.utils.DataSourceBridge;
 import com.example.caloriescounter.R;
 
 @SuppressWarnings("all")
@@ -26,12 +33,14 @@ public class AdvisorActivity extends Activity {
 
 	LinearLayout content = null;
 	List<SelectionGroup> list = null;
+	DataSourceBridge datasource;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		list = new LinkedList<SelectionGroup>();
-
+		datasource = new DataSourceBridge(this);
 		LinearLayout parentContainer = new LinearLayout(this);
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.MATCH_PARENT);
@@ -82,6 +91,22 @@ public class AdvisorActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Save To DB, next activity shows the recommend
+				Intent intent = new Intent(AdvisorActivity.this,
+						AdvisorInnerActivity.class);
+				Map<String, Integer> foods = new HashMap<String, Integer>();
+				for (SelectionGroup s : list) {
+					foods.put(s.food.getSelectedItem().toString(),
+							s.number.getValue());
+				}
+				int calorie = CalorieInput.calculateCalories(foods);
+				datasource.open();
+				CalorieEntry entry = new CalorieEntry();
+				entry.setCalorie(calorie);
+				entry.setType(Globals.CALORIE_TABLE_INPUT_TYPE.TYPE_IN);
+				datasource.insertCalorie(entry);
+
+				intent.putExtra("calories", calorie);
+				startActivity(intent);
 
 			}
 		});

@@ -36,6 +36,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="com.caloriecounter.portal.AdvisorInnerActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="com.caloriecounter.portal.DiaryActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
