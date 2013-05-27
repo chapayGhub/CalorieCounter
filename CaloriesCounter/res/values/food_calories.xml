@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- milk&dairy -->
+    <!-- <string name="cheese">440</string> -->
+    <string name="eggs">150</string>
+    <string name="ice_cream">180</string>
+    <string name="milk">70</string>
+    <!-- <string name="trifle">60</string> -->
+    <string name="yogurt">60</string>
+
+    <!-- breads&cereals -->
+    <!-- <string name="bagel">310</string> -->
+    <string name="bread">240</string>
+    <!-- <string name="noodles">70</string> -->
+    <string name="pasta">110</string>
+    <string name="potatoes">70</string>
+    <string name="rice">140</string>
+
+    <!-- meats&fish -->
+    <string name="bacon">500</string>
+    <string name="beef">280</string>
+    <string name="chicken">200</string>
+    <!--
+         <string name="ham">240</string>
+    <string name="lamb">300</string>
+    <string name="prawns">100</string>
+    <string name="pork">290</string>
+    <string name="salmon">180</string>
+    <string name="turkey">160</string>
+    -->
+
+
+    <!-- fruits&vegerables -->
+    <string name="apple">44</string>
+    <string name="banana">65</string>
+    <!--
+         <string name="broccoli">32</string>
+    <string name="cucumber">10</string>
+    <string name="grapes">62</string>
+    <string name="lettuce">15</string>
+    <string name="peas">148</string>
+    <string name="spinach">8</string>
+    -->
+    <string name="strawberries">30</string>
+
+</resources>

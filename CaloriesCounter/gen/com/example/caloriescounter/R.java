@@ -146,68 +146,108 @@ public final class R {
         public static final int activity_picktime=0x7f030003;
         public static final int activity_profile=0x7f030004;
         public static final int advisor=0x7f030005;
-        public static final int food_calories=0x7f030006;
-        public static final int main=0x7f030007;
-        public static final int tab1_spec=0x7f030008;
-        public static final int tab2_spec=0x7f030009;
-        public static final int tab3_spec=0x7f03000a;
-        public static final int tab4_spec=0x7f03000b;
+        public static final int main=0x7f030006;
+        public static final int tab1_spec=0x7f030007;
+        public static final int tab2_spec=0x7f030008;
+        public static final int tab3_spec=0x7f030009;
+        public static final int tab4_spec=0x7f03000a;
     }
     public static final class menu {
         public static final int home=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050006;
-        public static final int advisor=0x7f05000c;
-        public static final int app_name=0x7f050001;
-        public static final int back=0x7f050009;
-        public static final int button_add=0x7f05002f;
-        public static final int button_clear=0x7f050031;
-        public static final int button_end=0x7f050010;
-        public static final int button_know=0x7f050012;
-        public static final int button_save=0x7f050030;
-        public static final int button_start=0x7f05000f;
-        public static final int dialog_fragment_tag_general=0x7f050024;
-        public static final int forward=0x7f05000a;
-        public static final int hello=0x7f050000;
-        public static final int hello_world=0x7f050007;
-        public static final int home=0x7f05000b;
-        public static final int home_title=0x7f050008;
-        public static final int preference_key_profile_age=0x7f050026;
-        public static final int preference_key_profile_gender=0x7f050029;
-        public static final int preference_key_profile_height=0x7f050028;
-        public static final int preference_key_profile_name=0x7f050025;
-        public static final int preference_key_profile_weight=0x7f050027;
-        public static final int preference_name=0x7f050023;
-        public static final int profile=0x7f05000d;
-        public static final int setting=0x7f05000e;
-        public static final int spinner_name=0x7f050011;
-        public static final int tab1=0x7f050002;
-        public static final int tab2=0x7f050003;
-        public static final int tab3=0x7f050004;
-        public static final int tab4=0x7f050005;
-        public static final int ui_button_cancel_title=0x7f05001f;
-        public static final int ui_button_clear_title=0x7f050020;
-        public static final int ui_button_enddata_title=0x7f05002c;
-        public static final int ui_button_getmore_title=0x7f05002a;
-        public static final int ui_button_save_title=0x7f05001e;
-        public static final int ui_button_startdate_title=0x7f05002b;
-        public static final int ui_enddate_title=0x7f05002e;
-        public static final int ui_profile_age_hint=0x7f050015;
-        public static final int ui_profile_age_title=0x7f050016;
-        public static final int ui_profile_gender_female=0x7f05001d;
-        public static final int ui_profile_gender_male=0x7f05001c;
-        public static final int ui_profile_gender_title=0x7f05001b;
-        public static final int ui_profile_height_hint=0x7f050019;
-        public static final int ui_profile_height_title=0x7f05001a;
-        public static final int ui_profile_name_hint=0x7f050013;
-        public static final int ui_profile_name_title=0x7f050014;
-        public static final int ui_profile_toast_cancel_text=0x7f050022;
-        public static final int ui_profile_toast_save_text=0x7f050021;
-        public static final int ui_profile_weight_hint=0x7f050017;
-        public static final int ui_profile_weight_title=0x7f050018;
-        public static final int ui_startdate_title=0x7f05002d;
-        public static final int ui_text_unit=0x7f050032;
+        public static final int action_settings=0x7f050014;
+        public static final int advisor=0x7f05001a;
+        public static final int app_name=0x7f05000f;
+        /**      <string name="ham">240</string>
+    <string name="lamb">300</string>
+    <string name="prawns">100</string>
+    <string name="pork">290</string>
+    <string name="salmon">180</string>
+    <string name="turkey">160</string> 
+ fruits&vegerables 
+         */
+        public static final int apple=0x7f05000b;
+        public static final int back=0x7f050017;
+        /**  meats&fish 
+         */
+        public static final int bacon=0x7f050008;
+        public static final int banana=0x7f05000c;
+        public static final int beef=0x7f050009;
+        /**  breads&cereals 
+     <string name="bagel">310</string> 
+         */
+        public static final int bread=0x7f050004;
+        public static final int button_add=0x7f05003d;
+        public static final int button_clear=0x7f05003f;
+        public static final int button_end=0x7f05001e;
+        public static final int button_know=0x7f050020;
+        public static final int button_save=0x7f05003e;
+        public static final int button_start=0x7f05001d;
+        public static final int chicken=0x7f05000a;
+        public static final int dialog_fragment_tag_general=0x7f050032;
+        /**  milk&dairy 
+     <string name="cheese">440</string> 
+         */
+        public static final int eggs=0x7f050000;
+        public static final int forward=0x7f050018;
+        public static final int hello=0x7f05000e;
+        public static final int hello_world=0x7f050015;
+        public static final int home=0x7f050019;
+        public static final int home_title=0x7f050016;
+        public static final int ice_cream=0x7f050001;
+        public static final int milk=0x7f050002;
+        /**      <string name="noodles">70</string> 
+         */
+        public static final int pasta=0x7f050005;
+        public static final int potatoes=0x7f050006;
+        public static final int preference_key_profile_age=0x7f050034;
+        public static final int preference_key_profile_gender=0x7f050037;
+        public static final int preference_key_profile_height=0x7f050036;
+        public static final int preference_key_profile_name=0x7f050033;
+        public static final int preference_key_profile_weight=0x7f050035;
+        public static final int preference_name=0x7f050031;
+        public static final int profile=0x7f05001b;
+        public static final int rice=0x7f050007;
+        public static final int setting=0x7f05001c;
+        public static final int spinner_name=0x7f05001f;
+        /**      <string name="broccoli">32</string>
+    <string name="cucumber">10</string>
+    <string name="grapes">62</string>
+    <string name="lettuce">15</string>
+    <string name="peas">148</string>
+    <string name="spinach">8</string> 
+         */
+        public static final int strawberries=0x7f05000d;
+        public static final int tab1=0x7f050010;
+        public static final int tab2=0x7f050011;
+        public static final int tab3=0x7f050012;
+        public static final int tab4=0x7f050013;
+        public static final int ui_button_cancel_title=0x7f05002d;
+        public static final int ui_button_clear_title=0x7f05002e;
+        public static final int ui_button_enddata_title=0x7f05003a;
+        public static final int ui_button_getmore_title=0x7f050038;
+        public static final int ui_button_save_title=0x7f05002c;
+        public static final int ui_button_startdate_title=0x7f050039;
+        public static final int ui_enddate_title=0x7f05003c;
+        public static final int ui_profile_age_hint=0x7f050023;
+        public static final int ui_profile_age_title=0x7f050024;
+        public static final int ui_profile_gender_female=0x7f05002b;
+        public static final int ui_profile_gender_male=0x7f05002a;
+        public static final int ui_profile_gender_title=0x7f050029;
+        public static final int ui_profile_height_hint=0x7f050027;
+        public static final int ui_profile_height_title=0x7f050028;
+        public static final int ui_profile_name_hint=0x7f050021;
+        public static final int ui_profile_name_title=0x7f050022;
+        public static final int ui_profile_toast_cancel_text=0x7f050030;
+        public static final int ui_profile_toast_save_text=0x7f05002f;
+        public static final int ui_profile_weight_hint=0x7f050025;
+        public static final int ui_profile_weight_title=0x7f050026;
+        public static final int ui_startdate_title=0x7f05003b;
+        public static final int ui_text_unit=0x7f050040;
+        /**      <string name="trifle">60</string> 
+         */
+        public static final int yogurt=0x7f050003;
     }
     public static final class style {
         /** 
