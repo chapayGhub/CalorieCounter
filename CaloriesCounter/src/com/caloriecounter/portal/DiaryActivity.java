@@ -1,29 +1,40 @@
 package com.caloriecounter.portal;
 
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
-import android.annotation.SuppressLint;
+import org.achartengine.ChartFactory;
+import org.achartengine.GraphicalView;
+import org.achartengine.chart.BarChart.Type;
+import org.achartengine.chart.LineChart;
+import org.achartengine.chart.PointStyle;
+import org.achartengine.model.XYMultipleSeriesDataset;
+import org.achartengine.model.XYSeries;
+import org.achartengine.renderer.XYMultipleSeriesRenderer;
+import org.achartengine.renderer.XYSeriesRenderer;
+
+import android.app.ActionBar.LayoutParams;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.ListTextView;
-import com.caloriecounter.utils.DBDateUtils;
 import com.caloriecounter.utils.DataSourceBridge;
 import com.example.caloriescounter.R;
 
-@SuppressLint("DefaultLocale")
 public class DiaryActivity extends ListActivity {
 
 	public Context mContext; // context pointed to parent activity
@@ -40,7 +51,7 @@ public class DiaryActivity extends ListActivity {
 	public List<ActivityEntry> activityList;
 
 	// Different format to display the information
-	public static final String DATE_FORMAT = "HH:mm:ss MMM d yyyy";
+	public static final String DATE_FORMAT = "H:mm:ss MMM d yyyy";
 	public static final String DISTANCE_FORMAT = "#.##";
 	public static final String MINUTES_FORMAT = "%d mins";
 	public static final String SECONDS_FORMAT = "%d secs";
@@ -56,11 +67,18 @@ public class DiaryActivity extends ListActivity {
 
 		ListAdapter mAdapter = new ListAdapter();
 		mDataSourceBridge.open();
+		// TODO mok data
+		for (int i = 0; i < 1; i++) {
+			Random r = new Random();
+			ActivityEntry a = new ActivityEntry();
+			a.setActivityType(0);
+			a.setSteps(r.nextInt(1000));
+			a.setCalorie(100 + r.nextInt(200));
+			a.setDuration(r.nextInt(60));
+			mDataSourceBridge.insertActivity(a);
+		}
 
-		activityList = mDataSourceBridge.queryActitivities(
-				DBDateUtils.getDateFromString(
-						DBDateUtils.getStringFromDate(System
-								.currentTimeMillis())).getTime(), null);
+		activityList = mDataSourceBridge.queryActitivities(null, null);
 
 		if (!activityList.isEmpty()) {
 
@@ -83,7 +101,47 @@ public class DiaryActivity extends ListActivity {
 		}
 
 		setListAdapter(mAdapter);
+		
+		XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
+		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
+		float[] ary = new float[10];
+		for(int i=0; i<9; i++){
+			if(i>5)
+		    ary[i] = i;
+			else
+				ary[i] = 9-i;
+		}
+		float[] ary1 = new float[5];
+		for(int i=0; i<5; i++){
+			if(i<=5)
+		    ary1[i] = i;
+			else
+				ary1[i] = 10-i;
+		}
+		dataset = getDataset(ary,dataset,"hello");
+		dataset = getDataset(ary1,dataset,"world");
+        XYSeriesRenderer xyRenderer = new XYSeriesRenderer();  
+        xyRenderer.setColor(Color.BLUE);  
+        xyRenderer.setPointStyle(PointStyle.SQUARE);  
+        renderer.addSeriesRenderer(xyRenderer);  
+       xyRenderer = new XYSeriesRenderer();  
+        xyRenderer.setColor(Color.RED);  
+        xyRenderer.setPointStyle(PointStyle.CIRCLE);  
+        renderer.addSeriesRenderer(xyRenderer);  
+       LinearLayout linechart = (LinearLayout) findViewById(R.id.barchart);
+       GraphicalView lineView = ChartFactory.getLineChartView(this, dataset, renderer);
+       linechart.addView(lineView, new LayoutParams(700,600));
 	}
+	
+	private XYMultipleSeriesDataset getDataset(float[] f,XYMultipleSeriesDataset dataset, String name) {		 
+        XYSeries series = new XYSeries(name);
+          for (int k = 0; k < f.length;k++) { 
+        	  series.add(k,f[k]); 
+          }
+         dataset.addSeries(series);
+        return dataset; 
+     }
+	
 
 	public void OnListItemClick(ListView l, View v, int position, long id) {
 		((ListAdapter) getListAdapter()).doExtern(position);
@@ -97,21 +155,25 @@ public class DiaryActivity extends ListActivity {
 
 		@Override
 		public int getCount() {
+			// TODO Auto-generated method stub
 			return mObject.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
+			// TODO Auto-generated method stub
 			return mObject.get(position);
 		}
 
 		@Override
 		public long getItemId(int position) {
+			// TODO Auto-generated method stub
 			return (long) position;
 		}
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
 			ListTextView sv;
 			if (convertView == null) {
 				sv = new ListTextView(mContext, mObject.get(position).mTitle
@@ -157,9 +219,10 @@ public class DiaryActivity extends ListActivity {
 
 	// Convert duration in seconds to minutes.
 	private String parseDuration(int durationInSeconds) {
-		return durationInSeconds > 60 ? String.format(Locale.US,
-				MINUTES_FORMAT, MINUTES_FORMAT) : String.format(Locale.US,
-				MINUTES_FORMAT, durationInSeconds);
+		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
+				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
+				durationInSeconds);
+
 	}
 
 	public void onGetMoreClicked(View v) {
