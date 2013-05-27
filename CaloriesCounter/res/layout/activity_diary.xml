@@ -22,24 +22,25 @@
     </FrameLayout> 
     
     <LinearLayout android:id="@+id/barchart" android:orientation="horizontal"
-        android:layout_width="fill_parent" android:layout_height="180dp" android:layout_weight="1" />
+        android:layout_width="match_parent" android:layout_height="200dp" 
+        android:layout_marginTop="40dp"/>
       
 	
-	<TextView
+<!-- 	<TextView
 	    android:id="@+id/textview_profile"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_marginLeft="30dp"
 	    android:layout_marginTop="255dp"
 	    android:text="DIARY HISTORY">
-   </TextView>
+   </TextView> -->
 
 
   <LinearLayout
             android:id="@+id/button_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="250dp"
             android:orientation="horizontal" >
 
       <Button
@@ -50,15 +51,6 @@
           android:layout_weight="1"
           android:onClick="onGetMoreClicked"
           android:text="@string/ui_button_getmore_title" />
-
-      <Button
-          android:id="@+id/btnClear"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="140dip"
-          android:layout_weight="1"
-          android:onClick="onClearClicked"
-          android:text="@string/ui_button_clear_title" />
 
     </LinearLayout>
     

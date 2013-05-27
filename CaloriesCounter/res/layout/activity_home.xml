@@ -114,7 +114,7 @@
             android:focusable="true"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
-            android:text="this is a test for 7 numbers and longer"
+            android:text="Thanks for using our 30 days trial, please see our website for more information"
             android:textColor="#33CCFF"
             android:textSize="20dip" >
         </com.caloriecounter.utils.ScrollForeverTextView>

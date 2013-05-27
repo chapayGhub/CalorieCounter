@@ -1,8 +1,6 @@
 package com.caloriecounter.portal;
 
 import java.util.GregorianCalendar;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,14 +16,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.CalorieEntry;
@@ -109,10 +105,11 @@ public class HomeActivity extends Activity {
 			mTextview1.setText("wrong!");
 		}
 
-		if (savedInstanceState != null) {
-			step = savedInstanceState.getInt("STEPSAVED");
-			duration += savedInstanceState.getInt("TIMESAVED");
-		}
+		/*
+		 * if (savedInstanceState != null) { step =
+		 * savedInstanceState.getInt("STEPSAVED"); duration +=
+		 * savedInstanceState.getInt("TIMESAVED"); }
+		 */
 
 		sel = new SensorEventListener() {
 
@@ -138,20 +135,20 @@ public class HomeActivity extends Activity {
 				if (flag == 1) {
 					for (int i = 1; i < 30; i++) {
 						if (s1[100] > s1[100 - i]) {
-							if (s1[100] > 13)
+							if (s1[100] > 10)
 								i1++;
 						}
 					}
 					for (int i = 1; i < 30; i++) {
 						if (s1[100] > s1[100 + i]) {
-							if (s1[100] > 13)
+							if (s1[100] > 10)
 								i1++;
 						}
 					}
 
 					if (i1 == 58) {
 						step++;
-						mTextview1.setText(String.valueOf(step));
+						mTextview1.setText("Step: " + String.valueOf(step));
 						if ((step - pre_step) >= 2) {
 							float res = (float) (step - pre_step)
 									/ (float) (duration_float - pre_duration);
@@ -173,7 +170,7 @@ public class HomeActivity extends Activity {
 							.getTimeInMillis()) / 1000));
 					duration_float = ((int) (System.currentTimeMillis() - timeStarted
 							.getTimeInMillis()));
-					mTextview2.setText(String.valueOf(duration));
+					mTextview2.setText("Time: " + timeFormat(duration));
 				}
 
 				i1 = 0;
@@ -262,7 +259,7 @@ public class HomeActivity extends Activity {
 									mDataSourceBridge.insertCalorie(c);
 
 									mDataSourceBridge.close();
-									 jumpToShow();
+									jumpToShow();
 
 								}
 							});
@@ -320,8 +317,8 @@ public class HomeActivity extends Activity {
 		duration_float = 0;
 		// stoped = false;
 		duration = 0;
-		mTextview1.setText(String.valueOf(step));
-		mTextview2.setText(String.valueOf(duration));
+		mTextview1.setText("Step: " + String.valueOf(step));
+		mTextview2.setText("Time: " + timeFormat(duration));
 		mTextview3.setText("Not start yet!");
 	}
 
@@ -336,16 +333,16 @@ public class HomeActivity extends Activity {
 		return true;
 	}
 
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		// Save the tab index before the activity goes into background.
-		// Referred by string key TAB_INDEX_KEY
-		Toast.makeText(this, "savedInstanceIn", Toast.LENGTH_SHORT).show();
-		int stepSaved = Integer.valueOf(mTextview1.getText().toString());
-		outState.putInt("STEPSAVED", stepSaved);
-		int timeSaved = Integer.valueOf(mTextview2.getText().toString());
-		outState.putInt("TIMESAVED", timeSaved);
-	}
+	/*
+	 * protected void onSaveInstanceState(Bundle outState) {
+	 * super.onSaveInstanceState(outState); // Save the tab index before the
+	 * activity goes into background. // Referred by string key TAB_INDEX_KEY
+	 * Toast.makeText(this, "savedInstanceIn", Toast.LENGTH_SHORT).show(); int
+	 * stepSaved = Integer.valueOf(mTextview1.getText().toString());
+	 * outState.putInt("STEPSAVED", stepSaved); int timeSaved =
+	 * Integer.valueOf(mTextview2.getText().toString());
+	 * outState.putInt("TIMESAVED", timeSaved); }
+	 */
 
 	protected void onResume() {
 		super.onResume();
@@ -397,6 +394,17 @@ public class HomeActivity extends Activity {
 		// dura = duration;
 		// mTextview2.setText(String.valueOf(duration));
 		return duration;
+	}
+
+	public String timeFormat(int mins) {
+		String res = "";
+		if (mins >= 60) {
+			res = String.valueOf(mins / 60) + " mins "
+					+ String.valueOf(mins % 60) + " sec";
+		} else {
+			res = String.valueOf(mins) + " sec";
+		}
+		return res;
 	}
 
 }
