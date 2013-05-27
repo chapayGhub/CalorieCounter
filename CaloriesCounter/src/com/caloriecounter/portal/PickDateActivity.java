@@ -94,7 +94,6 @@ public class PickDateActivity extends ListActivity {
 		}
 
 		setListAdapter(mAdapter);
-
 	}
 
 	public void onStartDateClicked(View v) {
@@ -136,13 +135,13 @@ public class PickDateActivity extends ListActivity {
 	private void updateStartDateDisplay() {
 		mDisplayStartDate.setText(DateUtils.formatDateTime(this,
 				mStartDate.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE
-						| DateUtils.FORMAT_SHOW_TIME));
+						| DateUtils.FORMAT_SHOW_YEAR));
 	}
 
 	private void updateEndDateDisplay() {
 		mDisplayEndDate.setText(DateUtils.formatDateTime(this,
 				mEndDate.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE
-						| DateUtils.FORMAT_SHOW_TIME));
+						| DateUtils.FORMAT_SHOW_YEAR));
 	}
 
 	public void OnListItemClick(ListView l, View v, int position, long id) {

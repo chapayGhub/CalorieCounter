@@ -4,34 +4,57 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/startDateBtn"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="onStartDateClicked"
-        android:text="@string/ui_button_startdate_title" />
+        android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/endDateBtn"
-        android:layout_width="fill_parent"
+        <Button
+            android:id="@+id/startDateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onStartDateClicked"
+            android:text="@string/ui_button_startdate_title" />
+
+        <Button
+            android:id="@+id/endDateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onEndDateClicked"
+            android:text="@string/ui_button_enddata_title" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onEndDateClicked"
-        android:text="@string/ui_button_enddata_title" />
-     <TextView
-        android:id="@+id/startdate"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ui_startdate_title"
-        android:textSize="30sp" />
-      <TextView
-        android:id="@+id/enddate"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ui_enddate_title"
-        android:textSize="30sp" />
-      <ListView
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/startdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ui_startdate_title"
+            android:textSize="20sp" 
+            android:layout_weight="1"
+            android:layout_marginLeft="20sp"
+            android:layout_marginBottom="50sp"/>
+
+        <TextView
+            android:id="@+id/enddate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ui_enddate_title"
+            android:textSize="20sp" 
+            android:layout_weight="1"
+            android:layout_marginLeft="70sp"
+            android:layout_marginBottom="50sp"/>
+    </LinearLayout>
+
+    <ListView
         android:id="@id/android:list"
         android:layout_width="match_parent"
-        android:layout_height="400dp"  />
+        android:layout_height="400dp" />
 
 </LinearLayout>
