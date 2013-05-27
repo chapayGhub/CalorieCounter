@@ -5,30 +5,28 @@
     android:layout_gravity="bottom" >
 <FrameLayout
         android:id="@+id/main_tab_banner3"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:background="@drawable/main_tab_frame_tabwidget_background_img2">
 
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/home_title"
-            android:textColor="#000000"
+            android:text="@string/diary_title"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"/>
 
     </FrameLayout> 
       
 	<ImageView
 	    android:id="@+id/imageViewOfToday"
-	    android:layout_width="wrap_content"
+	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_marginLeft="120dp"
-	    android:layout_marginTop="60dp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginTop="45dp"
 	    android:background="@drawable/today" />
 	
 	<TextView
@@ -36,20 +34,22 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_marginLeft="30dp"
-	    android:layout_marginTop="180dp"
+	    android:layout_marginTop="255dp"
 	    android:text="DIARY HISTORY">
-     </TextView>
+   </TextView>
+
 
   <LinearLayout
+            android:id="@+id/button_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" >
-    </LinearLayout>
-    <Button
+            android:layout_marginTop="270dp"
+            android:orientation="horizontal" >
+  <Button
       android:id="@+id/btnGetMore"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
+
       android:layout_marginLeft="20dip"
       android:layout_weight="1"
       android:onClick="onGetMoreClicked"
@@ -59,18 +59,19 @@
       android:id="@+id/btnClear"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
+
       android:layout_marginLeft="150dip"
       android:layout_weight="1"
       android:onClick="onClearClicked"
       android:text="@string/ui_button_clear_title" />
-
-  <ListView
+    </LinearLayout>
+    
+     <ListView
       android:id="@id/android:list"
       android:layout_width="match_parent"
-      android:layout_height="150dp"
+      android:layout_height="336dp"
       android:layout_alignParentLeft="true"
-      android:layout_below="@+id/imageViewOfToday" >
+      android:layout_below="@+id/button_group" >
   </ListView>
 
 </RelativeLayout>
