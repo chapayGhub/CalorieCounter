@@ -55,7 +55,7 @@ public class DiaryActivity extends ListActivity {
 		ListAdapter mAdapter = new ListAdapter();
 		mDataSourceBridge.open();
 		// TODO mok data
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 1; i++) {
 			Random r = new Random();
 			ActivityEntry a = new ActivityEntry();
 			a.setActivityType(0);
