@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ListActivity;
 import android.content.Context;
@@ -25,6 +26,7 @@ import com.caloriecounter.utils.DBDateUtils;
 import com.caloriecounter.utils.DataSourceBridge;
 import com.example.caloriescounter.R;
 
+@SuppressLint("DefaultLocale")
 public class PickDateActivity extends ListActivity {
 
 	TextView mDisplayStartDate;
@@ -212,27 +214,21 @@ public class PickDateActivity extends ListActivity {
 
 	}
 
-	// Parser utilities to read value from database and interpret into
-	// human-readable string
-
-	// From activity type 0, 1, 2 ... to string "Running", "Walking", etc.
 	private String parseActivityType(int code) {
 		String activityTypes[] = getResources().getStringArray(
 				R.array.activity_type_items);
 		return activityTypes[code];
 	}
 
-	// From 1970 epoch time in seconds to something like "10/24/2012"
 	private String parseTime(Date datetime) {
 		SimpleDateFormat df = new SimpleDateFormat(DATE_FORMAT, Locale.US);
 		return df.format(datetime);
 	}
 
-	// Convert duration in seconds to minutes.
 	private String parseDuration(int durationInSeconds) {
-		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
-				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
-				durationInSeconds);
+		return durationInSeconds > 60 ? String.format(Locale.US,
+				MINUTES_FORMAT, MINUTES_FORMAT) : String.format(Locale.US,
+				MINUTES_FORMAT, durationInSeconds);
 	}
 
 }

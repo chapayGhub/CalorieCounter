@@ -5,12 +5,15 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
+import android.util.Log;
+
 public class CalorieInput {
 
 	public static final int EGGS = 150;
 	public static final int ICE_CREAM = 180;
 	public static final int MILK = 70;
 	public static final int YOGURT = 60;
+	public static final int TRIFLE = 60;
 	public static final int BREAD = 240;
 	public static final int PASTA = 110;
 	public static final int POTATOES = 70;
@@ -46,6 +49,7 @@ public class CalorieInput {
 		f_c.put("APPLE", APPLE);
 		f_c.put("BANANA", BANANA);
 		f_c.put("STRAWBERRIES", STRAWBERRIES);
+		f_c.put("TRIFLE", TRIFLE);
 
 		a_c.put("WALKING", WALKING);
 		a_c.put("RUNNING", RUNNING);
@@ -56,17 +60,41 @@ public class CalorieInput {
 		int calories = 0;
 
 		Iterator<Map.Entry<String, Integer>> itr = hm.entrySet().iterator();
+
 		while (itr.hasNext()) {
 			Map.Entry<String, Integer> entry = itr.next();
-			String key = entry.getKey().toUpperCase(Locale.US);
+			String key = entry.getKey();
 			int value = entry.getValue();
-			calories += f_c.get(key) * value;
+			try {
+				calories += f_c.get(key.toUpperCase(Locale.US)) * value;
+			} catch (Exception e) {
+				Log.e("calorie calculate", key + " calorie not found");
+			}
 		}
+
 		return calories;
 	}
 
 	public static int getActivityMinutesByCalories(int calories, String act) {
-		return calories / a_c.get(act.toUpperCase(Locale.US));
+		int result = 0;
+		try {
+			result = (int) (calories * 0.6f / a_c.get(act
+					.toUpperCase(Locale.US)));
+		} catch (Exception e) {
+			Log.e("calorie calculate", act + " calorie not found");
+		}
+		return result;
 	}
 
+	public static float calculateCaloriesByActivity(String activity, int seconds) {
+		float result = 0.0f;
+		try {
+			int unitCal = a_c.get(activity.toUpperCase(Locale.US));
+			float time = (float) seconds * 1.0f / 60;
+			result = unitCal * time;
+		} catch (Exception e) {
+			Log.e("calorie calculate", activity + " calorie not found");
+		}
+		return result;
+	}
 }

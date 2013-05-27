@@ -1,5 +1,6 @@
 package com.caloriecounter.portal;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import android.app.Activity;
@@ -17,7 +18,6 @@ public class HomeInnerActivity extends Activity {
 	// private ArrayAdapter<String> adapter;
 	// private List<String> type = new ArrayList<String>();
 
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,37 +26,34 @@ public class HomeInnerActivity extends Activity {
 		ImageView img = (ImageView) findViewById(R.id.imageView2);
 		TextView text = (TextView) findViewById(R.id.text_amount);
 		text.setTextSize(20);
-		Integer calorie = this.getIntent().getIntExtra("calories", 100);
+		Float calorie = this.getIntent().getFloatExtra("calories", 100);
 		/**
 		 * decide which activity to choose
 		 */
-		String[] activities = getResources().getStringArray(
-				R.array.activity_type_items);
+		String[] foods = getResources().getStringArray(R.array.food_list);
 
-		int index = (new Random()).nextInt(3);
+		int index = (new Random()).nextInt(foods.length);
 		/**
 		 * get calorie burned in this activity temporarily hard code
 		 */
-		int mins = CalorieInput.getActivityMinutesByCalories(calorie,
-				activities[index]);
+		float amount = 0;
+		try {
+			int unit_cal = Integer.valueOf(this.getResources().getString(
+					R.string.class.getField(foods[index]).getInt(null)));
+			amount = 1.0f * calorie / unit_cal;
 
-		String textValue = null;
-		if (mins >= 60) {
-			textValue = String.valueOf(mins / 60) + " hours "
-					+ String.valueOf(mins % 60) + " mins";
-		} else {
-			textValue = String.valueOf(mins) + " mins";
+		} catch (Exception e) {
+			Log.e("home", foods[index] + " calorie value not found!");
 		}
-		text.setText("Go " + activities[index] + " for " + textValue + "!");
+		text.setText("Calories you burned= " + foods[index] + " x "
+				+ (new DecimalFormat("##.##")).format(amount) + "!");
 
 		try {
-			img.setBackgroundResource(R.drawable.class.getField(
-					activities[index]).getInt(null));
+			img.setBackgroundResource(R.drawable.class.getField(foods[index])
+					.getInt(null));
 		} catch (Exception e) {
-			Log.e("advisor", activities[index] + " does not exist in R.java");
+			Log.e("advisor", foods[index] + " does not exist in R.java");
 		}
 
-		
 	}
 }
-

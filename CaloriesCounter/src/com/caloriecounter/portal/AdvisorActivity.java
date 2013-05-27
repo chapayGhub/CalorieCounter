@@ -90,7 +90,6 @@ public class AdvisorActivity extends Activity {
 		save.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Save To DB, next activity shows the recommend
 				Intent intent = new Intent(AdvisorActivity.this,
 						AdvisorInnerActivity.class);
 				Map<String, Integer> foods = new HashMap<String, Integer>();
