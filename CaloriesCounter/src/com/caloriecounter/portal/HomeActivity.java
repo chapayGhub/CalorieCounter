@@ -262,7 +262,7 @@ public class HomeActivity extends Activity {
 									mDataSourceBridge.insertCalorie(c);
 
 									mDataSourceBridge.close();
-									// jumpToShow();
+									 jumpToShow();
 
 								}
 							});
@@ -271,7 +271,7 @@ public class HomeActivity extends Activity {
 								@Override
 								public void onClick(DialogInterface dialog,
 										int which) {
-									// jumpToShow();
+									jumpToShow();
 								}
 							});
 					step = 0;
