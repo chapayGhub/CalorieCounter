@@ -9,8 +9,9 @@ package com.example.caloriescounter;
 
 public final class R {
     public static final class array {
+        public static final int activity_type_items=0x7f060001;
         public static final int food_list=0x7f060000;
-        public static final int types=0x7f060001;
+        public static final int types=0x7f060002;
     }
     public static final class attr {
     }
@@ -62,17 +63,18 @@ public final class R {
         public static final int yellow=0x7f020019;
     }
     public static final class id {
-        public static final int Forward=0x7f09003f;
-        public static final int action_settings=0x7f090045;
+        public static final int Forward=0x7f090044;
+        public static final int action_settings=0x7f09004a;
         public static final int btnAdvise=0x7f090025;
-        public static final int btnCancel=0x7f09003d;
-        public static final int btnClear=0x7f09002a;
-        public static final int btnEnd=0x7f09002e;
-        public static final int btnKnow=0x7f090043;
+        public static final int btnCancel=0x7f090042;
+        public static final int btnClear=0x7f09002b;
+        public static final int btnEnd=0x7f09002f;
+        public static final int btnGetMore=0x7f09002a;
+        public static final int btnKnow=0x7f090048;
         public static final int btnReset=0x7f090026;
-        public static final int btnSave=0x7f09003c;
-        public static final int btnStart=0x7f09002d;
-        public static final int channel=0x7f090033;
+        public static final int btnSave=0x7f090041;
+        public static final int btnStart=0x7f09002e;
+        public static final int channel=0x7f090034;
         public static final int checkbox1=0x7f090001;
         public static final int checkbox10=0x7f09001c;
         public static final int checkbox11=0x7f09001f;
@@ -85,20 +87,22 @@ public final class R {
         public static final int checkbox7=0x7f090013;
         public static final int checkbox8=0x7f090016;
         public static final int checkbox9=0x7f090019;
-        public static final int editAge=0x7f090036;
-        public static final int editHeight=0x7f090038;
-        public static final int editName=0x7f090035;
-        public static final int editWeight=0x7f090037;
-        public static final int imageProfile=0x7f090030;
-        public static final int imageView1=0x7f090041;
+        public static final int editAge=0x7f09003b;
+        public static final int editHeight=0x7f09003d;
+        public static final int editName=0x7f09003a;
+        public static final int editWeight=0x7f09003c;
+        public static final int endDateBtn=0x7f090036;
+        public static final int enddate=0x7f090038;
+        public static final int imageProfile=0x7f090031;
+        public static final int imageView1=0x7f090046;
         public static final int imageViewOfToday=0x7f090028;
-        public static final int main_tab=0x7f09002c;
-        public static final int main_tab_banner=0x7f09002b;
+        public static final int main_tab=0x7f09002d;
+        public static final int main_tab_banner=0x7f09002c;
         public static final int main_tab_banner2=0x7f090000;
         public static final int main_tab_banner3=0x7f090027;
-        public static final int main_tab_banner4=0x7f090034;
-        public static final int main_tab_container=0x7f09002f;
-        public static final int mytabhost=0x7f090044;
+        public static final int main_tab_banner4=0x7f090039;
+        public static final int main_tab_container=0x7f090030;
+        public static final int mytabhost=0x7f090049;
         public static final int numberPicker1=0x7f090003;
         public static final int numberPicker10=0x7f09001e;
         public static final int numberPicker11=0x7f090021;
@@ -111,14 +115,16 @@ public final class R {
         public static final int numberPicker7=0x7f090015;
         public static final int numberPicker8=0x7f090018;
         public static final int numberPicker9=0x7f09001b;
-        public static final int radioGender=0x7f090039;
-        public static final int radioGenderF=0x7f09003a;
-        public static final int radioGenderM=0x7f09003b;
-        public static final int s_text1=0x7f090031;
-        public static final int s_text2=0x7f090032;
-        public static final int sp1=0x7f090040;
-        public static final int textBack=0x7f09003e;
-        public static final int text_adivisor=0x7f090042;
+        public static final int radioGender=0x7f09003e;
+        public static final int radioGenderF=0x7f09003f;
+        public static final int radioGenderM=0x7f090040;
+        public static final int s_text1=0x7f090032;
+        public static final int s_text2=0x7f090033;
+        public static final int sp1=0x7f090045;
+        public static final int startDateBtn=0x7f090035;
+        public static final int startdate=0x7f090037;
+        public static final int textBack=0x7f090043;
+        public static final int text_adivisor=0x7f090047;
         public static final int textview1=0x7f090002;
         public static final int textview10=0x7f09001d;
         public static final int textview11=0x7f090020;
@@ -137,14 +143,15 @@ public final class R {
         public static final int activity_advisor=0x7f030000;
         public static final int activity_diary=0x7f030001;
         public static final int activity_home=0x7f030002;
-        public static final int activity_profile=0x7f030003;
-        public static final int advisor=0x7f030004;
-        public static final int food_calories=0x7f030005;
-        public static final int main=0x7f030006;
-        public static final int tab1_spec=0x7f030007;
-        public static final int tab2_spec=0x7f030008;
-        public static final int tab3_spec=0x7f030009;
-        public static final int tab4_spec=0x7f03000a;
+        public static final int activity_picktime=0x7f030003;
+        public static final int activity_profile=0x7f030004;
+        public static final int advisor=0x7f030005;
+        public static final int food_calories=0x7f030006;
+        public static final int main=0x7f030007;
+        public static final int tab1_spec=0x7f030008;
+        public static final int tab2_spec=0x7f030009;
+        public static final int tab3_spec=0x7f03000a;
+        public static final int tab4_spec=0x7f03000b;
     }
     public static final class menu {
         public static final int home=0x7f080000;
@@ -154,11 +161,11 @@ public final class R {
         public static final int advisor=0x7f05000c;
         public static final int app_name=0x7f050001;
         public static final int back=0x7f050009;
-        public static final int button_add=0x7f05002a;
-        public static final int button_clear=0x7f05002c;
+        public static final int button_add=0x7f05002f;
+        public static final int button_clear=0x7f050031;
         public static final int button_end=0x7f050010;
         public static final int button_know=0x7f050012;
-        public static final int button_save=0x7f05002b;
+        public static final int button_save=0x7f050030;
         public static final int button_start=0x7f05000f;
         public static final int dialog_fragment_tag_general=0x7f050024;
         public static final int forward=0x7f05000a;
@@ -181,7 +188,11 @@ public final class R {
         public static final int tab4=0x7f050005;
         public static final int ui_button_cancel_title=0x7f05001f;
         public static final int ui_button_clear_title=0x7f050020;
+        public static final int ui_button_enddata_title=0x7f05002c;
+        public static final int ui_button_getmore_title=0x7f05002a;
         public static final int ui_button_save_title=0x7f05001e;
+        public static final int ui_button_startdate_title=0x7f05002b;
+        public static final int ui_enddate_title=0x7f05002e;
         public static final int ui_profile_age_hint=0x7f050015;
         public static final int ui_profile_age_title=0x7f050016;
         public static final int ui_profile_gender_female=0x7f05001d;
@@ -195,7 +206,8 @@ public final class R {
         public static final int ui_profile_toast_save_text=0x7f050021;
         public static final int ui_profile_weight_hint=0x7f050017;
         public static final int ui_profile_weight_title=0x7f050018;
-        public static final int ui_text_unit=0x7f05002d;
+        public static final int ui_startdate_title=0x7f05002d;
+        public static final int ui_text_unit=0x7f050032;
     }
     public static final class style {
         /** 

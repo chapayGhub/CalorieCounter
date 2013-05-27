@@ -103,9 +103,9 @@ public class HomeActivity extends Activity {
 			@Override
 			public void onSensorChanged(SensorEvent event) {
 				// TODO Auto-generated method stub
-				float x = event.values[SensorManager.DATA_X];
+				// float x = event.values[SensorManager.DATA_X];
 				float y = event.values[SensorManager.DATA_Y];
-				float z = event.values[SensorManager.DATA_Z];
+//				float z = event.values[SensorManager.DATA_Z];
 
 				for (int i = 1; i < 200; i++) {
 					s1[i - 1] = s[i];

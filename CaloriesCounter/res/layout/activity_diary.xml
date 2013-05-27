@@ -40,20 +40,20 @@
 	    android:text="DIARY HISTORY">
      </TextView>
 
-
- <ListView
-     android:id="@id/android:list"
-     android:layout_width="match_parent"
-     android:layout_height="336dp"
-     android:layout_alignParentLeft="true"
-     android:layout_below="@+id/imageViewOfToday" >
- </ListView>
-
   <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp" >
-        </LinearLayout>
+    </LinearLayout>
+    <Button
+      android:id="@+id/btnGetMore"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_marginLeft="20dip"
+      android:layout_weight="1"
+      android:onClick="onGetMoreClicked"
+      android:text="@string/ui_button_getmore_title" />
 
   <Button
       android:id="@+id/btnClear"
@@ -64,5 +64,13 @@
       android:layout_weight="1"
       android:onClick="onClearClicked"
       android:text="@string/ui_button_clear_title" />
+
+  <ListView
+      android:id="@id/android:list"
+      android:layout_width="match_parent"
+      android:layout_height="150dp"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@+id/imageViewOfToday" >
+  </ListView>
 
 </RelativeLayout>

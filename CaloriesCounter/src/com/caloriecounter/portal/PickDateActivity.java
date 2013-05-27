@@ -3,25 +3,33 @@ package com.caloriecounter.portal;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import android.app.DatePickerDialog;
 import android.app.ListActivity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.ListTextView;
 import com.caloriecounter.utils.DataSourceBridge;
 import com.example.caloriescounter.R;
 
-public class DiaryActivity extends ListActivity {
+public class PickDateActivity extends ListActivity {
+
+	TextView mDisplayStartDate;
+	TextView mDisplayEndDate;
+	Calendar mStartDate = Calendar.getInstance();
+	Calendar mEndDate = Calendar.getInstance();
 
 	public Context mContext; // context pointed to parent activity
 	public DataSourceBridge mDataSourceBridge;
@@ -43,16 +51,26 @@ public class DiaryActivity extends ListActivity {
 	public static final String SECONDS_FORMAT = "%d secs";
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_diary);
+
+		setContentView(R.layout.activity_picktime);
+
+		mDisplayStartDate = (TextView) findViewById(R.id.startdate);
+		mDisplayEndDate = (TextView) findViewById(R.id.enddate);
+
+		updateStartDateDisplay();
+		updateEndDateDisplay();
 
 		mContext = this;
 
 		mDataSourceBridge = new DataSourceBridge(mContext);
 
 		ListAdapter mAdapter = new ListAdapter();
+
 		mDataSourceBridge.open();
+		// activityList = mDataSourceBridge.queryActitivities(
+		// mStartDate.getTimeInMillis(), mEndDate.getTimeInMillis());
 		activityList = mDataSourceBridge.queryActitivities(null, null);
 
 		if (!activityList.isEmpty()) {
@@ -76,6 +94,55 @@ public class DiaryActivity extends ListActivity {
 		}
 
 		setListAdapter(mAdapter);
+
+	}
+
+	public void onStartDateClicked(View v) {
+
+		DatePickerDialog.OnDateSetListener mDateListener = new DatePickerDialog.OnDateSetListener() {
+			public void onDateSet(DatePicker view, int year, int monthOfYear,
+					int dayOfMonth) {
+				mStartDate.set(Calendar.YEAR, year);
+				mStartDate.set(Calendar.MONTH, monthOfYear);
+				mStartDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+				updateStartDateDisplay();
+			}
+		};
+
+		new DatePickerDialog(PickDateActivity.this, mDateListener,
+				mStartDate.get(Calendar.YEAR), mStartDate.get(Calendar.MONTH),
+				mStartDate.get(Calendar.DAY_OF_MONTH)).show();
+
+	}
+
+	public void onEndDateClicked(View v) {
+
+		DatePickerDialog.OnDateSetListener mDateListener = new DatePickerDialog.OnDateSetListener() {
+			public void onDateSet(DatePicker view, int year, int monthOfYear,
+					int dayOfMonth) {
+				mEndDate.set(Calendar.YEAR, year);
+				mEndDate.set(Calendar.MONTH, monthOfYear);
+				mEndDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+				updateEndDateDisplay();
+			}
+		};
+
+		new DatePickerDialog(PickDateActivity.this, mDateListener,
+				mEndDate.get(Calendar.YEAR), mEndDate.get(Calendar.MONTH),
+				mEndDate.get(Calendar.DAY_OF_MONTH)).show();
+
+	}
+
+	private void updateStartDateDisplay() {
+		mDisplayStartDate.setText(DateUtils.formatDateTime(this,
+				mStartDate.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE
+						| DateUtils.FORMAT_SHOW_TIME));
+	}
+
+	private void updateEndDateDisplay() {
+		mDisplayEndDate.setText(DateUtils.formatDateTime(this,
+				mEndDate.getTimeInMillis(), DateUtils.FORMAT_SHOW_DATE
+						| DateUtils.FORMAT_SHOW_TIME));
 	}
 
 	public void OnListItemClick(ListView l, View v, int position, long id) {
@@ -160,13 +227,4 @@ public class DiaryActivity extends ListActivity {
 
 	}
 
-	public void onGetMoreClicked(View v) {
-		// Making a "toast" informing the user changes are canceled.
-		Intent intent = new Intent(DiaryActivity.this, PickDateActivity.class);
-		startActivity(intent);
-		Toast.makeText(getApplicationContext(),
-				getString(R.string.ui_profile_toast_cancel_text),
-				Toast.LENGTH_SHORT).show();
-
-	}
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/startDateBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onStartDateClicked"
+        android:text="@string/ui_button_startdate_title" />
+
+    <Button
+        android:id="@+id/endDateBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onEndDateClicked"
+        android:text="@string/ui_button_enddata_title" />
+     <TextView
+        android:id="@+id/startdate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ui_startdate_title"
+        android:textSize="30sp" />
+      <TextView
+        android:id="@+id/enddate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ui_enddate_title"
+        android:textSize="30sp" />
+      <ListView
+        android:id="@id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"  />
+
+</LinearLayout>
