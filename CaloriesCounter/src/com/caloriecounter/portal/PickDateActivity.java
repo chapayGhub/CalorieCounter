@@ -20,11 +20,11 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.caloriecounter.R;
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.ListTextView;
 import com.caloriecounter.utils.DBDateUtils;
 import com.caloriecounter.utils.DataSourceBridge;
-import com.example.caloriescounter.R;
 
 @SuppressLint("DefaultLocale")
 public class PickDateActivity extends ListActivity {

@@ -8,8 +8,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.caloriecounter.R;
 import com.caloriecounter.utils.CalorieInput;
-import com.example.caloriescounter.R;
 
 public class AdvisorInnerActivity extends Activity {
 

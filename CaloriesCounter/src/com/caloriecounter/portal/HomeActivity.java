@@ -23,12 +23,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.caloriecounter.R;
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.CalorieEntry;
 import com.caloriecounter.common.Globals;
 import com.caloriecounter.utils.CalorieInput;
 import com.caloriecounter.utils.DataSourceBridge;
-import com.example.caloriescounter.R;
 
 public class HomeActivity extends Activity {
 

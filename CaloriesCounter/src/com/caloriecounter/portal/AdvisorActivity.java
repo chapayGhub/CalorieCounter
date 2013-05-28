@@ -22,11 +22,11 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.caloriecounter.R;
 import com.caloriecounter.common.CalorieEntry;
 import com.caloriecounter.common.Globals;
 import com.caloriecounter.utils.CalorieInput;
 import com.caloriecounter.utils.DataSourceBridge;
-import com.example.caloriescounter.R;
 
 @SuppressWarnings("all")
 public class AdvisorActivity extends Activity {
@@ -52,7 +52,7 @@ public class AdvisorActivity extends Activity {
 				LayoutParams.WRAP_CONTENT);
 		title.setLayoutParams(params);
 		title.setPadding(10, 0, 10, 0);
-		title.setBackgroundResource(com.example.caloriescounter.R.drawable.main_tab_frame_tabwidget_background_img2);
+		title.setBackgroundResource(R.drawable.main_tab_frame_tabwidget_background_img2);
 
 		TextView txtTitle = new TextView(this);
 		params = new LayoutParams(LayoutParams.WRAP_CONTENT,

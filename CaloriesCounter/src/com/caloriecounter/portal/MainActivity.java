@@ -1,7 +1,5 @@
 package com.caloriecounter.portal;
 
-import com.example.caloriescounter.R;
-
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
+
+import com.caloriecounter.R;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends ActivityGroup {

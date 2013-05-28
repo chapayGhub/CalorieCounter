@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.caloriescounter;
+package com.caloriecounter;
 
 public final class R {
     public static final class array {
@@ -171,10 +171,10 @@ public final class R {
         public static final int home=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f040018;
-        public static final int advisor=0x7f040021;
-        public static final int advisor_title=0x7f04001b;
-        public static final int app_name=0x7f040013;
+        public static final int action_settings=0x7f04007b;
+        public static final int advisor=0x7f040083;
+        public static final int advisor_title=0x7f04007d;
+        public static final int app_name=0x7f040076;
         /** 
          <string name="ham">240</string>
     <string name="lamb">300</string>
@@ -185,53 +185,101 @@ public final class R {
     
  fruits&vegerables 
          */
-        public static final int apple=0x7f04000f;
-        public static final int back=0x7f04001e;
+        public static final int apple=0x7f040073;
+        public static final int back=0x7f040080;
         /**  meats&fish 
          */
-        public static final int bacon=0x7f04000c;
-        public static final int banana=0x7f040010;
-        public static final int beef=0x7f04000d;
+        public static final int bacon=0x7f040070;
+        public static final int banana=0x7f040074;
+        public static final int beef=0x7f040071;
         /**  breads&cereals 
  <string name="bagel">310</string> 
          */
-        public static final int bread=0x7f040008;
-        public static final int button_add=0x7f040044;
-        public static final int button_clear=0x7f040046;
-        public static final int button_end=0x7f040025;
-        public static final int button_know=0x7f040027;
-        public static final int button_save=0x7f040045;
-        public static final int button_start=0x7f040024;
-        public static final int chicken=0x7f04000e;
-        public static final int dialog_fragment_tag_general=0x7f040039;
-        public static final int diary_title=0x7f04001c;
+        public static final int bread=0x7f04006c;
+        public static final int button_add=0x7f0400a6;
+        public static final int button_clear=0x7f0400a8;
+        public static final int button_end=0x7f040087;
+        public static final int button_know=0x7f040089;
+        public static final int button_save=0x7f0400a7;
+        public static final int button_start=0x7f040086;
+        public static final int chicken=0x7f040072;
+        public static final int dialog_fragment_tag_general=0x7f04009b;
+        public static final int diary_title=0x7f04007e;
         /**  milk&dairy 
  <string name="cheese">440</string> 
          */
-        public static final int eggs=0x7f040003;
-        public static final int forward=0x7f04001f;
-        public static final int hello=0x7f040012;
-        public static final int hello_world=0x7f040019;
-        public static final int home=0x7f040020;
-        public static final int home_title=0x7f04001a;
-        public static final int ice_cream=0x7f040004;
-        public static final int milk=0x7f040005;
+        public static final int eggs=0x7f040067;
+        public static final int forward=0x7f040081;
+        public static final int home=0x7f040082;
+        public static final int home_title=0x7f04007c;
+        public static final int ice_cream=0x7f040068;
+        public static final int milk=0x7f040069;
         /**  <string name="noodles">70</string> 
          */
-        public static final int pasta=0x7f040009;
-        public static final int potatoes=0x7f04000a;
-        public static final int preference_key_profile_age=0x7f04003b;
-        public static final int preference_key_profile_gender=0x7f04003e;
-        public static final int preference_key_profile_height=0x7f04003d;
-        public static final int preference_key_profile_name=0x7f04003a;
-        public static final int preference_key_profile_weight=0x7f04003c;
-        public static final int preference_name=0x7f040038;
-        public static final int profile=0x7f040022;
-        public static final int profile_title=0x7f04001d;
-        public static final int rice=0x7f04000b;
+        public static final int pasta=0x7f04006d;
+        public static final int potatoes=0x7f04006e;
+        public static final int preference_key_profile_age=0x7f04009d;
+        public static final int preference_key_profile_gender=0x7f0400a0;
+        public static final int preference_key_profile_height=0x7f04009f;
+        public static final int preference_key_profile_name=0x7f04009c;
+        public static final int preference_key_profile_weight=0x7f04009e;
+        public static final int preference_name=0x7f04009a;
+        public static final int profile=0x7f040084;
+        public static final int profile_title=0x7f04007f;
+        public static final int rice=0x7f04006f;
+        public static final int run_1=0x7f040004;
+        public static final int run_10=0x7f040016;
+        public static final int run_11=0x7f040018;
+        public static final int run_12=0x7f04001a;
+        public static final int run_13=0x7f04001c;
+        public static final int run_14=0x7f04001e;
+        public static final int run_15=0x7f040020;
+        public static final int run_16=0x7f040022;
+        public static final int run_17=0x7f040024;
+        public static final int run_18=0x7f040026;
+        public static final int run_19=0x7f040028;
+        public static final int run_2=0x7f040006;
+        public static final int run_20=0x7f04002a;
+        public static final int run_21=0x7f04002c;
+        public static final int run_22=0x7f04002e;
+        public static final int run_23=0x7f040030;
+        public static final int run_24=0x7f040032;
+        public static final int run_25=0x7f040034;
+        public static final int run_26=0x7f040036;
+        public static final int run_27=0x7f040038;
+        public static final int run_28=0x7f04003a;
+        public static final int run_29=0x7f04003c;
+        public static final int run_3=0x7f040008;
+        public static final int run_30=0x7f04003e;
+        public static final int run_31=0x7f040040;
+        public static final int run_32=0x7f040042;
+        public static final int run_33=0x7f040044;
+        public static final int run_34=0x7f040046;
+        public static final int run_35=0x7f040048;
+        public static final int run_36=0x7f04004a;
+        public static final int run_37=0x7f04004c;
+        public static final int run_38=0x7f04004e;
+        public static final int run_39=0x7f040050;
+        public static final int run_4=0x7f04000a;
+        public static final int run_40=0x7f040052;
+        public static final int run_41=0x7f040054;
+        public static final int run_42=0x7f040056;
+        public static final int run_43=0x7f040058;
+        public static final int run_44=0x7f04005a;
+        public static final int run_45=0x7f04005c;
+        public static final int run_46=0x7f04005e;
+        public static final int run_47=0x7f040060;
+        public static final int run_48=0x7f040062;
+        public static final int run_49=0x7f040064;
+        public static final int run_5=0x7f04000c;
+        public static final int run_50=0x7f040066;
+        public static final int run_6=0x7f04000e;
+        public static final int run_7=0x7f040010;
+        public static final int run_8=0x7f040012;
+        public static final int run_9=0x7f040014;
         public static final int running=0x7f040001;
-        public static final int setting=0x7f040023;
-        public static final int spinner_name=0x7f040026;
+        public static final int setting=0x7f040085;
+        public static final int spinner_name=0x7f040088;
         /** 
          <string name="broccoli">32</string>
     <string name="cucumber">10</string>
@@ -241,37 +289,87 @@ public final class R {
     <string name="spinach">8</string>
     
          */
-        public static final int strawberries=0x7f040011;
+        public static final int strawberries=0x7f040075;
         public static final int swimming=0x7f040002;
-        public static final int tab1=0x7f040014;
-        public static final int tab2=0x7f040015;
-        public static final int tab3=0x7f040016;
-        public static final int tab4=0x7f040017;
-        public static final int trifle=0x7f040006;
-        public static final int ui_button_cancel_title=0x7f040034;
-        public static final int ui_button_clear_title=0x7f040035;
-        public static final int ui_button_enddata_title=0x7f040041;
-        public static final int ui_button_getmore_title=0x7f04003f;
-        public static final int ui_button_save_title=0x7f040033;
-        public static final int ui_button_startdate_title=0x7f040040;
-        public static final int ui_enddate_title=0x7f040043;
-        public static final int ui_profile_age_hint=0x7f04002a;
-        public static final int ui_profile_age_title=0x7f04002b;
-        public static final int ui_profile_gender_female=0x7f040032;
-        public static final int ui_profile_gender_male=0x7f040031;
-        public static final int ui_profile_gender_title=0x7f040030;
-        public static final int ui_profile_height_hint=0x7f04002e;
-        public static final int ui_profile_height_title=0x7f04002f;
-        public static final int ui_profile_name_hint=0x7f040028;
-        public static final int ui_profile_name_title=0x7f040029;
-        public static final int ui_profile_toast_cancel_text=0x7f040037;
-        public static final int ui_profile_toast_save_text=0x7f040036;
-        public static final int ui_profile_weight_hint=0x7f04002c;
-        public static final int ui_profile_weight_title=0x7f04002d;
-        public static final int ui_startdate_title=0x7f040042;
-        public static final int ui_text_unit=0x7f040047;
+        public static final int tab1=0x7f040077;
+        public static final int tab2=0x7f040078;
+        public static final int tab3=0x7f040079;
+        public static final int tab4=0x7f04007a;
+        public static final int trifle=0x7f04006a;
+        public static final int ui_button_cancel_title=0x7f040096;
+        public static final int ui_button_clear_title=0x7f040097;
+        public static final int ui_button_enddata_title=0x7f0400a3;
+        public static final int ui_button_getmore_title=0x7f0400a1;
+        public static final int ui_button_save_title=0x7f040095;
+        public static final int ui_button_startdate_title=0x7f0400a2;
+        public static final int ui_enddate_title=0x7f0400a5;
+        public static final int ui_profile_age_hint=0x7f04008c;
+        public static final int ui_profile_age_title=0x7f04008d;
+        public static final int ui_profile_gender_female=0x7f040094;
+        public static final int ui_profile_gender_male=0x7f040093;
+        public static final int ui_profile_gender_title=0x7f040092;
+        public static final int ui_profile_height_hint=0x7f040090;
+        public static final int ui_profile_height_title=0x7f040091;
+        public static final int ui_profile_name_hint=0x7f04008a;
+        public static final int ui_profile_name_title=0x7f04008b;
+        public static final int ui_profile_toast_cancel_text=0x7f040099;
+        public static final int ui_profile_toast_save_text=0x7f040098;
+        public static final int ui_profile_weight_hint=0x7f04008e;
+        public static final int ui_profile_weight_title=0x7f04008f;
+        public static final int ui_startdate_title=0x7f0400a4;
+        public static final int ui_text_unit=0x7f0400a9;
+        public static final int walk_1=0x7f040003;
+        public static final int walk_10=0x7f040015;
+        public static final int walk_11=0x7f040017;
+        public static final int walk_12=0x7f040019;
+        public static final int walk_13=0x7f04001b;
+        public static final int walk_14=0x7f04001d;
+        public static final int walk_15=0x7f04001f;
+        public static final int walk_16=0x7f040021;
+        public static final int walk_17=0x7f040023;
+        public static final int walk_18=0x7f040025;
+        public static final int walk_19=0x7f040027;
+        public static final int walk_2=0x7f040005;
+        public static final int walk_20=0x7f040029;
+        public static final int walk_21=0x7f04002b;
+        public static final int walk_22=0x7f04002d;
+        public static final int walk_23=0x7f04002f;
+        public static final int walk_24=0x7f040031;
+        public static final int walk_25=0x7f040033;
+        public static final int walk_26=0x7f040035;
+        public static final int walk_27=0x7f040037;
+        public static final int walk_28=0x7f040039;
+        public static final int walk_29=0x7f04003b;
+        public static final int walk_3=0x7f040007;
+        public static final int walk_30=0x7f04003d;
+        public static final int walk_31=0x7f04003f;
+        public static final int walk_32=0x7f040041;
+        public static final int walk_33=0x7f040043;
+        public static final int walk_34=0x7f040045;
+        public static final int walk_35=0x7f040047;
+        public static final int walk_36=0x7f040049;
+        public static final int walk_37=0x7f04004b;
+        public static final int walk_38=0x7f04004d;
+        public static final int walk_39=0x7f04004f;
+        public static final int walk_4=0x7f040009;
+        public static final int walk_40=0x7f040051;
+        public static final int walk_41=0x7f040053;
+        public static final int walk_42=0x7f040055;
+        public static final int walk_43=0x7f040057;
+        public static final int walk_44=0x7f040059;
+        public static final int walk_45=0x7f04005b;
+        public static final int walk_46=0x7f04005d;
+        public static final int walk_47=0x7f04005f;
+        public static final int walk_48=0x7f040061;
+        public static final int walk_49=0x7f040063;
+        public static final int walk_5=0x7f04000b;
+        public static final int walk_50=0x7f040065;
+        public static final int walk_6=0x7f04000d;
+        public static final int walk_7=0x7f04000f;
+        public static final int walk_8=0x7f040011;
+        public static final int walk_9=0x7f040013;
         public static final int walking=0x7f040000;
-        public static final int yogurt=0x7f040007;
+        public static final int yogurt=0x7f04006b;
     }
     public static final class style {
         /** 

@@ -14,7 +14,6 @@ import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
-import android.app.ActionBar.LayoutParams;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,11 +26,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.caloriecounter.R;
 import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.ListTextView;
 import com.caloriecounter.utils.DBDateUtils;
 import com.caloriecounter.utils.DataSourceBridge;
-import com.example.caloriescounter.R;
 
 public class DiaryActivity extends ListActivity {
 

@@ -1,7 +1,5 @@
 package com.caloriecounter.portal;
 
-import com.example.caloriescounter.R;
-
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +8,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.caloriecounter.R;
 
 public class ProfileActivity extends Activity {
 
