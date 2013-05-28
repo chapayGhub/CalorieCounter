@@ -109,8 +109,8 @@ public class DiaryActivity extends ListActivity {
 			else
 				ary1[i] = 10 - i;
 		}
-		dataset = getDataset(ary, dataset, "hello");
-		dataset = getDataset(ary1, dataset, "world");
+		dataset = getDataset(ary, dataset, "In");
+		dataset = getDataset(ary1, dataset, "Out");
 		XYSeriesRenderer xyRenderer = new XYSeriesRenderer();
 		xyRenderer.setColor(Color.BLUE);
 		xyRenderer.setPointStyle(PointStyle.SQUARE);
@@ -121,6 +121,9 @@ public class DiaryActivity extends ListActivity {
 		renderer.setZoomEnabled(false);
 		renderer.setPanEnabled(false);
 		renderer.addSeriesRenderer(xyRenderer);
+		renderer.setLabelsTextSize(20);
+		renderer.setChartTitle("Calories");
+		renderer.setLegendTextSize(30);
 		LinearLayout linechart = (LinearLayout) findViewById(R.id.barchart);
 		GraphicalView lineView = ChartFactory.getLineChartView(this, dataset,
 				renderer);
