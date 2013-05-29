@@ -11,20 +11,20 @@ import com.caloriecounter.common.Globals;
 public class HistoricalRecordParsor {
 
 	public static float[] getCaloriesFromPastRecord(Context c) {
-		float[] result = new float[50];
+		float[] result = new float[7];
 		try {
-			for (int i = 0; i < 50; i++) {
-
-				float walkTime = Float.valueOf(c.getResources()
-						.getString(
-								R.string.class.getField("walk_" + (i + 1))
-										.getInt(null)));
-				float runTime = Float
-						.valueOf(c.getResources().getString(
-								R.string.class.getField("run_" + (i + 1))
-										.getInt(null)));
-				result[i] = walkTime * CalorieInput.WALKING + runTime
-						* CalorieInput.RUNNING;
+			for (int i = 0; i < 7; i++) {
+				result[i] = 0.0f;
+				for (int j = 0; j < 7; j++) {
+					float walkTime = Float.valueOf(c.getResources().getString(
+							R.string.class.getField("walk_" + (i + 1)).getInt(
+									null)));
+					float runTime = Float.valueOf(c.getResources().getString(
+							R.string.class.getField("run_" + (i + 1)).getInt(
+									null)));
+					result[i] += walkTime * CalorieInput.WALKING + runTime
+							* CalorieInput.RUNNING;
+				}
 			}
 		} catch (Exception e) {
 		}
@@ -32,12 +32,11 @@ public class HistoricalRecordParsor {
 	}
 
 	public static float[] getCaloriesInFromPastFood(Context c) {
-
 		DataSourceBridge b = new DataSourceBridge(c);
 		b.open();
 		List<CalorieEntry> cr = b.queryCalorieRecords(null, null,
 				Globals.CALORIE_TABLE_INPUT_TYPE.TYPE_IN);
-		float[] result = new float[cr.size() > 50 ? 50 : cr.size()];
+		float[] result = new float[cr.size() > 7 ? 7 : cr.size()];
 		for (int i = 0; i < result.length; i++) {
 			result[i] = cr.get(i).getCalorie();
 		}

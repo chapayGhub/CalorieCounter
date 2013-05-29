@@ -170,8 +170,8 @@ public class DataSourceBridge {
 		List<CalorieEntry> result = new ArrayList<CalorieEntry>();
 		StringBuffer selection = new StringBuffer();
 		if (startTime != null) {
-			selection.append(" " + CalorieTable.KEY_DATE_TIME + ">"
-					+ startTime + "");
+			selection.append(" " + CalorieTable.KEY_DATE_TIME + ">" + startTime
+					+ "");
 		}
 
 		if (endTime != null) {
@@ -190,7 +190,7 @@ public class DataSourceBridge {
 
 		Cursor cursor = database.query(CalorieTable.TABLE_NAME, null,
 				selection.toString(), null, null, null, CalorieTable.KEY_ROWID
-						+ " desc");
+						+ " asc");
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			CalorieEntry activity = CalorieEntry.buildFromCursor(cursor);
