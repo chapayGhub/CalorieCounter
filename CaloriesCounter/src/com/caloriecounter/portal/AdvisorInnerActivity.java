@@ -28,7 +28,8 @@ public class AdvisorInnerActivity extends Activity {
 		String[] activities = getResources().getStringArray(
 				R.array.activity_type_items);
 
-		int index = (new Random()).nextInt(3);
+		int index = (new Random()).nextInt(activities.length);
+
 		/**
 		 * get calorie burned in this activity temporarily hard code
 		 */

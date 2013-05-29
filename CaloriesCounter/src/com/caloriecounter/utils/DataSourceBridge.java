@@ -170,7 +170,7 @@ public class DataSourceBridge {
 		List<CalorieEntry> result = new ArrayList<CalorieEntry>();
 		StringBuffer selection = new StringBuffer();
 		if (startTime != null) {
-			selection.append(" " + ActivityTable.KEY_DATE_TIME + ">"
+			selection.append(" " + CalorieTable.KEY_DATE_TIME + ">"
 					+ startTime + "");
 		}
 
@@ -178,10 +178,13 @@ public class DataSourceBridge {
 			if (selection.length() > 0) {
 				selection.append(" and ");
 			}
-			selection.append(" " + ActivityTable.KEY_DATE_TIME + "<" + endTime
+			selection.append(" " + CalorieTable.KEY_DATE_TIME + "<" + endTime
 					+ "");
 		}
 		if (type != null) {
+			if (selection.length() > 0) {
+				selection.append(" and ");
+			}
 			selection.append(" " + CalorieTable.KEY_TYPE + "=" + type);
 		}
 

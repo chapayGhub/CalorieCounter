@@ -31,6 +31,7 @@ import com.caloriecounter.common.ActivityEntry;
 import com.caloriecounter.common.ListTextView;
 import com.caloriecounter.utils.DBDateUtils;
 import com.caloriecounter.utils.DataSourceBridge;
+import com.caloriecounter.utils.HistoricalRecordParsor;
 
 public class DiaryActivity extends ListActivity {
 
@@ -94,20 +95,10 @@ public class DiaryActivity extends ListActivity {
 
 		XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
 		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-		float[] ary = new float[10];
-		for (int i = 0; i < 9; i++) {
-			if (i > 5)
-				ary[i] = i;
-			else
-				ary[i] = 9 - i;
-		}
-		float[] ary1 = new float[5];
-		for (int i = 0; i < 5; i++) {
-			if (i <= 5)
-				ary1[i] = i;
-			else
-				ary1[i] = 10 - i;
-		}
+
+		float[] ary = HistoricalRecordParsor.getCaloriesInFromPastFood(this);
+		float[] ary1 = HistoricalRecordParsor.getCaloriesFromPastRecord(this);
+
 		dataset = getDataset(ary, dataset, "In");
 		dataset = getDataset(ary1, dataset, "Out");
 		XYSeriesRenderer xyRenderer = new XYSeriesRenderer();
