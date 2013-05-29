@@ -217,7 +217,7 @@ public class HomeActivity extends Activity {
 						mTextview3.setText("Ended!");
 						stoped = true;
 					}
-
+					final int tpduration = duration;
 					reset();
 					AlertDialog.Builder builder = new Builder(mContext);
 					builder.setTitle("Your Choice");
@@ -259,7 +259,7 @@ public class HomeActivity extends Activity {
 									mDataSourceBridge.insertCalorie(c);
 
 									mDataSourceBridge.close();
-									jumpToShow();
+									jumpToShow(tpduration);
 
 								}
 							});
@@ -268,7 +268,7 @@ public class HomeActivity extends Activity {
 								@Override
 								public void onClick(DialogInterface dialog,
 										int which) {
-									jumpToShow();
+									jumpToShow(tpduration);
 								}
 							});
 					step = 0;
@@ -295,13 +295,13 @@ public class HomeActivity extends Activity {
 
 	}
 
-	public void jumpToShow() {
+	public void jumpToShow(int d) {
 		Intent i = new Intent(mContext, HomeInnerActivity.class);
 		float calorie = 0;
 		if (activity_type.equals("Walking")) {
-			calorie = CalorieInput.WALKING * ((float) duration / (float) 60);
+			calorie = CalorieInput.WALKING * ((float) d / (float) 60);
 		} else {
-			calorie = CalorieInput.RUNNING * ((float) duration / (float) 60);
+			calorie = CalorieInput.RUNNING * ((float) d / (float) 60);
 		}
 
 		i.putExtra("calories", calorie);

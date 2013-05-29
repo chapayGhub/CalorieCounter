@@ -185,9 +185,7 @@ public class DiaryActivity extends ListActivity {
 
 	// From activity type 0, 1, 2 ... to string "Running", "Walking", etc.
 	private String parseActivityType(int code) {
-		String activityTypes[] = getResources().getStringArray(
-				R.array.activity_type_items);
-		return activityTypes[code];
+		return code == 0 ? "Walking" : "Running";
 	}
 
 	// From 1970 epoch time in seconds to something like "10/24/2012"
